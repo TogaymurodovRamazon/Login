@@ -1,0 +1,83 @@
+﻿<Window x:Class="Login.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Login"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="450" Width="600">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                    x:Name="Asosiysi_view" Visibility="Collapsed">
+            <local:Asosiysi x:Name="Asosiy_Page" Height="450" Width="600" >
+                
+            </local:Asosiysi>
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                    x:Name="Login_view" Visibility="Collapsed">
+            <local:LoginPage x:Name="Login_Page" Height="450" Width="600">
+
+            </local:LoginPage>
+        </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                    x:Name="PinKod_view" Visibility="Collapsed">
+            <local:PinKodPage x:Name="PinKod_Page"  Height="450" Width="600">
+                
+            </local:PinKodPage>
+        </Viewbox>
+
+        <Viewbox  Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                    x:Name="Menyu_view" Visibility="Collapsed">
+            <local:Menyu x:Name="Menyu_Page" Height="450" Width="800">
+
+            </local:Menyu>
+        </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                   x:Name="Kassa_view" Visibility="Collapsed">
+            <local:KassaPage x:Name="Kassa_Page" Height="450" Width="800" >
+
+            </local:KassaPage>
+        </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="9" Grid.ColumnSpan="6" 
+                   x:Name="Setting_view" Visibility="Visible">
+            <local:SettingPage x:Name="Setting_Page" Height="450" Width="800">
+
+            </local:SettingPage>
+
+        </Viewbox>
+        
+    </StackPanel>
+</Window>
