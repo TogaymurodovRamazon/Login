@@ -5,8 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 10 0" Height="25" Width="80">
+                <Button x:Name="create_btn" Click="create_btn_Click" Height="25" Content="Create" Background="#4D638C" Foreground="White"></Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 10 0" Height="25" Width="80">
+                <Button x:Name="edit_btn" Click="edit_btn_Click" Height="25" Content="Edit" Background="#4D638C" Foreground="White"></Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 10 0" Height="25" Width="80">
+                <Button x:Name="delete_btn" Click="delete_btn_Click" Height="25" Content="Delete" Background="#4D638C" Foreground="White"></Button>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="1" Background="White">
+            <DataGrid x:Name="users_datagrid"
+                      AutoGenerateColumns="False"
+                      Width="Auto"
+                      GridLinesVisibility="Horizontal"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      IsReadOnly="True"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False"
+                      Background="#ffffff"
+                      Margin="10"
+                      BorderThickness="1"
+                      SelectionMode="Single"
+                      AlternationCount="2"
+                      HeadersVisibility="Column"
+                      ItemsSource="{Binding res, Mode=TwoWay}" SelectionChanged="users_datagrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding Id}" IsReadOnly="True" Width="0.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fullname" Binding="{Binding FullName}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="BornDate" Binding="{Binding BornDate}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
     </Grid>
 </UserControl>

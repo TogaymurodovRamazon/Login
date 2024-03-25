@@ -7,6 +7,131 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600" Background="Snow">
     <Grid>
+        <TabControl HorizontalAlignment="Left">
+            <TabItem Width="250" Header="Manager">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <StackPanel>
+                            <TextBlock Text="FirstName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="LastName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="FatherName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="UserName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Password" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <Button Width="150" Content="Bekor qilish" FontSize="18"
+                                    Height="40" Background="Green" Margin="0 50 0 0"/>
+                        </StackPanel> 
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <StackPanel>
+                            <TextBlock Text="Pin Kod" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="PhoneNumber" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Adres" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Born Date" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Hire Date" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                        </StackPanel> 
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <StackPanel>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <DatePicker Width="150" Margin="0 25 0 0"/>
+                            <DatePicker Width="150" Margin="0 25 0 0"/>
+                            <Button Width="150" Content="Saqlash" FontSize="18"
+                                    Height="40" Margin="0 50 0 0" Background="Brown"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </TabItem>
             
+            <TabItem Width="250" Header="Employe" Foreground="Blue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <StackPanel>
+                            <TextBlock Text="FirstName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="LastName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="FatherName" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Pin Kod" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <Button Width="150" Content="Bekor qilish" FontSize="18"
+                                    Height="40" Background="Green" Margin="0 50 0 0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <StackPanel>
+                            <TextBlock Text="Pin Kod" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="PhoneNumber" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Adres" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Born Date" Foreground="Blue" FontSize="15"
+                                       Margin="0 30 0 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <StackPanel>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <TextBox Width="150" Margin="0 25 0 0"/>
+                            <DatePicker Width="150" Margin="0 25 0 0"/>
+                            <DatePicker Width="150" Margin="0 25 0 0"/>
+                            <Button Width="150" Content="Saqlash" FontSize="18"
+                                    Height="40" Margin="0 50 0 0" Background="Brown"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+            </TabItem>
+        </TabControl>    
     </Grid>
 </UserControl>

@@ -20,9 +20,14 @@ namespace Login
     /// </summary>
     public partial class XodimControl : UserControl
     {
+        MainWindow _window {  get; set; }
         public XodimControl()
         {
             InitializeComponent();
+        }
+        public void SetMainWindow(MainWindow window)
+        {
+            _window = window;
         }
     }
 }

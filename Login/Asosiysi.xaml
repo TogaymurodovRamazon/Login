@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Snow">
     <UserControl.Resources>
         <ResourceDictionary Source="Controls.xaml" />
     </UserControl.Resources>
@@ -19,13 +19,9 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Background="#2B2B2B">
-            <DockPanel>
+            <DockPanel >
                 <TextBlock Text="Kirish" Foreground="Snow"
-                         HorizontalAlignment="Center" VerticalAlignment="Center"
-                         FontSize="25" Margin="265 0 0 0"/>
-                <Button Content="X" x:Name="exit_btn" HorizontalAlignment="Right" Width="40" Height="40"
-                        FontSize="25" Foreground="Snow" Background="Red" 
-                        Click="exit_btn_Click"/>
+                         FontSize="25" HorizontalAlignment="Center"/>
             </DockPanel>
             
             </Grid>

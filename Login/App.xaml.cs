@@ -42,6 +42,10 @@ namespace Login
                 services.AddScoped<IUserRepository, UserRepository>();
                 services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+                services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+                services.AddScoped<EmployeService>();
+                
+
                 services.AddTransient<MainWindow>();
 
             }).Build();

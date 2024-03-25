@@ -16,24 +16,24 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Background="DodgerBlue">
             <StackPanel>
-                <TextBlock Text="Settings" FontSize="30" Foreground="DodgerBlue"
+                <TextBlock Text="Settings" FontSize="30" Foreground="Snow"
                            HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <Button Content="Xodimlar" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"/>
                 <Button Content="Check Sozlamalari" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="18"/>
+                        Background="Transparent" Foreground="Snow" FontSize="18"/>
                 <Button Content="Chegirma berish" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="18"/>
+                        Background="Transparent" Foreground="Snow" FontSize="18"/>
                 <Button Content="Mijozlar" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"/>
                 <Button Content="Kassa" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"/>
                 <Button Content="Til" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"/>
                 <Button Content="Thems" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Blue" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"/>
             </StackPanel>
         </Grid>
 

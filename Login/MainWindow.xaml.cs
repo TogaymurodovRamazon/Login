@@ -24,11 +24,17 @@ namespace Login
         private readonly IUserService userService;
         private readonly IGenericRepository<User> genericRepository;
         private readonly AppDBContext appDBContext;
-        public MainWindow(IUserService userService , IGenericRepository<User> genericRepository , AppDBContext appDBContext)
+        private readonly EmployeService employeService;
+
+        public MainWindow(IUserService userService , 
+            IGenericRepository<User> genericRepository , 
+            AppDBContext appDBContext,
+            EmployeService employeService)
         {
             InitializeComponent();
 
             this.appDBContext = appDBContext;
+            this.employeService = employeService;
             this.userService = userService;
             this.genericRepository = genericRepository;
 
@@ -38,13 +44,13 @@ namespace Login
             Menyu_Page.SetMainWindow(this);
             Kassa_Page.SetMainWindow(this);
             Setting_Page.SetMainWindow(this);
-            
-            
+            Xodim_Control.SetMainWindow(this);
+            employee_control.SetAllVariables(employeService, this, userService);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Asosiysi_view.Visibility = Visibility.Visible;
+            Asosiysi_view.Visibility = Visibility.Collapsed;
         }
     }
 }

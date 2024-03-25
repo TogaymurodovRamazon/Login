@@ -8,6 +8,7 @@ namespace Login.Variables
 {
     public static class StaticVariable
     {
-        public static string DatabaseName { get; set; } = "roboticspos.db";
+        public static string DatabaseName { get; set; } = "robotics_posdb.db";
+        public static string CurrentUserName { get; set; } = "";
     }
 }
