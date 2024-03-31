@@ -42,10 +42,5 @@ namespace Login
             _mainWindow.Asosiysi_view.Visibility=Visibility.Collapsed;
             _mainWindow.PinKod_view.Visibility=Visibility.Visible;
         }
-
-        private void exit_btn_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
     }
 }

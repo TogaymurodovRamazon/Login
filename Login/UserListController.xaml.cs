@@ -1,5 +1,6 @@
 ﻿using Login.Common.DTO;
 using Login.Data.Models;
+using Login.Pages;
 using Login.Service;
 using System;
 using System.Collections.Generic;
@@ -24,17 +25,20 @@ namespace Login
     public partial class UserListController : UserControl
     {
         List<UserDTO> users = new List<UserDTO>();
+        private List<EmployeeDTO> employeeDTOs = new List<EmployeeDTO>();
+        
 
         MainWindow _mainWindow { get; set; }
         IUserService _userService { get; set; }
-        EmployeService _employeService { get; set; }
+        private EmployeService _employeService { get; set; }
+        EmployeeDTO selectedUser { get; set; }
 
         public UserListController()
         {
             InitializeComponent();
         }
         
-        public async void SetAllVariables(EmployeService employeService,
+        public async void SetMainWindow(EmployeService employeService,
                                           MainWindow mainWindow, 
                                           IUserService userService)
         {
@@ -46,62 +50,51 @@ namespace Login
 
         public async Task GetAllUsers()
         {
-            users=await _userService.GetAllUsers();
-            if (users != null && users.Any())
+            employeeDTOs = await _employeService.GetAllEmployee();
+            if (employeeDTOs != null && employeeDTOs.Any())
             {
-                users_datagrid.ItemsSource = users;
+                users_datagrid.ItemsSource = employeeDTOs;
             }
         }
 
         private async void create_btn_Click(object sender, RoutedEventArgs e)
         {
+           UserCreateForm userCreateForm = new UserCreateForm();
+            userCreateForm.SetVariables(this, _employeService);
+            userCreateForm.ShowDialog();
+        }
+
+        private void edit_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(selectedUser != null)
+            {
+                UserCreateForm userCreateForm = new UserCreateForm();
+                userCreateForm.SetVariables(this, _employeService);
+                userCreateForm.SetEmployeeDate(selectedUser.Id);
+                userCreateForm.ShowDialog();
+            }
+        }
+
+        private async void delete_btn_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
-                EmployeCreateDTO newEmploye = new EmployeCreateDTO()
+                if(selectedUser != null)
                 {
-                    //employee details
-                    JobTitle = "DeveloperIT",
-                    EnrollNumber = 12312345,
-                    HireDate = DateTime.Now,
-                    EmployeRole = Data.Enum.EmployePole.Manager,
-
-                    //user details
-                    UserName = "Valijon",
-                    Password = "valibek",
-                    PIN = "56789",
-
-                    //person details
-                    FirstName = "Solijon",
-                    LastName = "Aminov",
-                    FatherName = "Qori o'g'li",
-                    BornDate = new DateTime(2010, 11, 01),
-                    Addres = "Toshkent",
-                    PhoneNumber = "904418556",
-
-                };
-
-                await _employeService.CreateEmploye(newEmploye);
-                await GetAllUsers();
+                    await _employeService.DeleteEmployee(selectedUser.Id);
+                    await GetAllUsers();
+                }
+               
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private void edit_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void delete_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void users_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            selectedUser = users_datagrid.SelectedItem as EmployeeDTO;
         }
     }
 }

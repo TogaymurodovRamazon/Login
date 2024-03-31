@@ -1,0 +1,114 @@
+﻿<Window x:Class="Login.Pages.UserCreateForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Login.Pages"
+        mc:Ignorable="d"
+        Title="UserCreateForm" Height="500" Width="400">
+    <Grid HorizontalAlignment="Right">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                        Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="FirstName" VerticalAlignment="Center"/>
+                <TextBox x:Name="firstname_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="FirstName"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+             Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="LastName" VerticalAlignment="Center"/>
+                <TextBox x:Name="lastname_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="LastName"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="FatherName" VerticalAlignment="Center"/>
+                <TextBox x:Name="fathername_txt" Width="250" FontSize="10" Margin="5"
+                         materialDesign:HintAssist.Hint="FatherName"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Address" VerticalAlignment="Center"/>
+                <TextBox x:Name="address_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="Address"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="PhoneNumber" VerticalAlignment="Center"/>
+                <TextBox x:Name="phonenumber_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="PhoneNumber"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="UserName" VerticalAlignment="Center"/>
+                <TextBox x:Name="username_txt" Width="250" FontSize="10" Margin="5"
+                         materialDesign:HintAssist.Hint="Username"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Password" VerticalAlignment="Center"/>
+                <TextBox x:Name="password_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="Password"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="PIN" VerticalAlignment="Center"/>
+                <TextBox x:Name="pin_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="PIN"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="BornDate" VerticalAlignment="Center"/>
+                <DatePicker x:Name="borndate_picter" Width="250" FontSize="10" Margin="5"
+                            materialDesign:HintAssist.Hint="BornDate"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="HireDate" VerticalAlignment="Center"/>
+                <DatePicker x:Name="hiredate_picter" Width="250" FontSize="10" Margin="5"
+                            materialDesign:HintAssist.Hint="HireDate"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="JobTitle" VerticalAlignment="Center"/>
+                <TextBox x:Name="jobtitle_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="JobTitle"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="EmployeeRole" VerticalAlignment="Center"/>
+                <ComboBox x:Name="employerole_combo" Width="250" FontSize="10" Margin="5" 
+                          materialDesign:HintAssist.Hint="EmployeeRole">
+                    <ComboBoxItem IsSelected="True" Content="Cashier"/>
+                    <ComboBoxItem Content="Admin" />
+                </ComboBox>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="EnrollNumber" VerticalAlignment="Center"/>
+                <TextBox x:Name="enrollnumber_txt" Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="EnrollNumber"/>
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Content="Save" Width="100" x:Name="save_btn" Click="save_btn_Click"/>
+            <Button Content="Cansel" Width="100" x:Name="cansel_btn" Click="cansel_btn_Click"
+                    Margin="20 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -13,15 +13,16 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="DodgerBlue">
+        <DockPanel Grid.Column="0" Background="DodgerBlue">
             <StackPanel>
                 <TextBlock Text="Settings" FontSize="30" Foreground="Snow"
                            HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <Button Content="Xodimlar" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"
+                        x:Name="employe_btn" Click="employe_btn_Click"/>
                 <Button Content="Check Sozlamalari" Width="180" Height="30" Margin="0 20 0 0"
                         Background="Transparent" Foreground="Snow" FontSize="18"/>
                 <Button Content="Chegirma berish" Width="180" Height="30" Margin="0 20 0 0"
@@ -31,18 +32,25 @@
                 <Button Content="Kassa" Width="180" Height="30" Margin="0 20 0 0"
                         Background="Transparent" Foreground="Snow" FontSize="20"/>
                 <Button Content="Til" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"/>
+                        Background="Transparent" Foreground="Snow" FontSize="20"
+                        x:Name="language_btn" Click="language_btn_Click"/>
                 <Button Content="Thems" Width="180" Height="30" Margin="0 20 0 0"
                         Background="Transparent" Foreground="Snow" FontSize="20"/>
             </StackPanel>
-        </Grid>
+        </DockPanel>
 
-        <Grid Grid.Column="1">
-            <StackPanel>
-                
-            </StackPanel>
+        <DockPanel Grid.Column="1">
+            <DockPanel Width="Auto" Height="Auto" x:Name="employees_doc" Visibility="Collapsed">
+                <local:UserListController x:Name="employees_control" Width="Auto" Height="Auto">
+                    
+                </local:UserListController>  
+            </DockPanel>
+
+            <DockPanel Width="Auto" Height="Auto" x:Name="language_doc" Visibility="Visible">
+               
+            </DockPanel>
             
-        </Grid>
+        </DockPanel>
         
     </Grid>
 </UserControl>

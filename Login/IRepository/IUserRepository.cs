@@ -9,8 +9,8 @@ namespace Login.IRepository
 {
       public interface IUserRepository
     {
-        Task<bool> LoginByUserName(string userName, string password);
+        Task<User> LoginByUserName(string userName, string password);
         Task<bool> LoginByPini(string pini);
-        Task<List<User>> GetAllUsers();
+        Task<List<Employee>> GetAllUsers();
     }
 }

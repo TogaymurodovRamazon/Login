@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Login.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,14 +22,16 @@ namespace Login
     public partial class PinKodPage : UserControl
     {
         MainWindow _mainWindow { get; set; }
+        IUserService _userService { get; set; }
         public PinKodPage()
         {
             InitializeComponent();
         }
 
-        public void SetMainWindow(MainWindow mainWindow)
+        public void SetMainWindow(MainWindow mainWindow,IUserService userService)
         {
             _mainWindow = mainWindow;
+            _userService = userService;
         }
 
         private void Cancel_btn_Click(object sender, RoutedEventArgs e)
@@ -51,17 +54,22 @@ namespace Login
                 Raqam_pasbox.Password = Raqam_pasbox.Password.Substring(0,Raqam_pasbox.Password.Length-1);
         }
 
-        private void Raqam_pasbox_PasswordChanged(object sender, RoutedEventArgs e)
+        private async void Raqam_pasbox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (Raqam_pasbox.Password.Length == 4)
             {
-               
-
+                if (await _userService.LoginByPin(Raqam_pasbox.Password))
+                {
+               _mainWindow.PinKod_view.Visibility=Visibility.Collapsed;
+                _mainWindow.Menyu_view.Visibility = Visibility.Visible;
+                }
+              else
+               {
+                MessageBox.Show("Pin kod xato kiritildi!");
+                Raqam_pasbox.Password = "";
+              }
             }
-            else
-            {
-                return;
-            }
+            
         }
     }
 }

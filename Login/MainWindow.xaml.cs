@@ -39,18 +39,14 @@ namespace Login
             this.genericRepository = genericRepository;
 
             Asosiy_Page.SetMainWindow(this);
-            Login_Page.SetMainWindow(this);
-            PinKod_Page.SetMainWindow(this);
+            Login_Page.SetMainWindow(this, userService);
+            PinKod_Page.SetMainWindow(this,userService);
             Menyu_Page.SetMainWindow(this);
             Kassa_Page.SetMainWindow(this);
-            Setting_Page.SetMainWindow(this);
+            Setting_Page.SetMainWindow(this, userService, employeService);
             Xodim_Control.SetMainWindow(this);
-            employee_control.SetAllVariables(employeService, this, userService);
+            employee_control.SetMainWindow(employeService, this, userService);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Asosiysi_view.Visibility = Visibility.Collapsed;
-        }
     }
 }

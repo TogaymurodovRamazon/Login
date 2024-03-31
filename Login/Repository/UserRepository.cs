@@ -18,9 +18,10 @@ namespace Login.Repository
            this.context = _context;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<Employee>> GetAllUsers()
         {
-           var users= await context.Users.Where(x=>!x.IsDeleted).Include(s=>s.Person).ToListAsync();
+           var users= await context.Employees.Where(a => !a.IsDeleted).Include(a => a.User).
+                ThenInclude(a => a.Person).ToListAsync();
             return users;
         }
 
@@ -29,10 +30,10 @@ namespace Login.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<bool> LoginByUserName(string userName, string password)
+        public async Task<User> LoginByUserName(string userName, string password)
         {
-            var res = context.Users.FirstOrDefault(p => p.UserName == userName && p.Password == password);
-            return res != null;
+            var res = await context.Users.FirstOrDefaultAsync(p => p.UserName == userName && p.Password == password);
+            return res;
         }
     }
 }

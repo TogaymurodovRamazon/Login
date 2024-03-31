@@ -2,6 +2,7 @@
 using Login.Data;
 using Login.Data.Models;
 using Login.IRepository;
+using Login.Variables;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Login.Service
         public async Task<List<UserDTO>> GetAllUsers()
         {
             List<UserDTO> userDTOs = new List<UserDTO>();
-            List<User> users = await _userRepository.GetAllUsers();
+            List<Employee> users = await _userRepository.GetAllUsers();
             if (users.Any())
             {
                 foreach (var item in users)
@@ -36,14 +37,14 @@ namespace Login.Service
                     UserDTO user = new UserDTO()
                     {
                         Id = item.Id,
-                        UserName = item.UserName,
-                        Firstname = item.Person.FirstName,
-                        Lastname = item.Person.LastName,
-                        Fathername = item.Person.FatherName,
-                        FullName = $"{item.Person.LastName} {item.Person.FirstName} {item.Person.FatherName}",
-                        Addres = item.Person.Addres,
-                        BornDate = item.Person.BornDate,
-                        PhoneNumber = item.Person.PhoneNumber
+                        UserName = item.User.UserName,
+                        Firstname = item.User.Person.FirstName,
+                        Lastname = item.User.Person.LastName,
+                        Fathername = item.User.Person.FatherName,
+                        FullName = $"{item.User.Person.LastName} {item.User.Person.FirstName} {item.User.Person.FatherName}",
+                        Addres = item.User.Person.Addres,
+                        BornDate = item.User.Person.BornDate,
+                        PhoneNumber = item.User.Person.PhoneNumber
                     };
                     userDTOs.Add(user);
                 }
@@ -59,10 +60,10 @@ namespace Login.Service
 
         public async Task<bool> LoginByUserName(string userName, string password)
         {
-            var res= await _genericRepository.GetAll(x=>x.UserName==userName && x.Password==password).FirstOrDefaultAsync() != null;
-            var all=_userRepository.LoginByUserName(userName, password);
-            var allUsers= _dbContext.Users.ToList();
-            return res;
+           
+            var all=await _userRepository.LoginByUserName(userName, password);
+            StaticVariable.CurrentUserName = all.UserName;
+            return all != null;
         }
     }
 }

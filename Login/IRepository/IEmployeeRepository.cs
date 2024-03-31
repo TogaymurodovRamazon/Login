@@ -12,6 +12,8 @@ namespace Login.IRepository
         Task<Employee> CreateEmployee(Employee employee);
         Task<Employee> UpdateEmployee(Employee employee);
         Task DelateEmployee(Employee employee);
-        Task<Employee> GetEmployeeById(long id);
+        Task<Employee> GetEmployeeById(long Id);
+
+        Task<List<Employee>> GetAllEmployees();
     }
 }

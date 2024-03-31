@@ -37,7 +37,7 @@
         </Grid>
 
         <Grid Grid.Row="3" >
-            <WrapPanel Width="180">
+            <WrapPanel Width="200">
                 <Button Width="60" Height="45" Content="1" FontSize="30" Foreground="Blue"
                         BorderThickness="0" Background="Transparent"
                         Click="Btn_Raqam"/>
@@ -71,7 +71,7 @@
                 <Button Width="60" Height="45" Content="0" FontSize="30" Foreground="Blue"
                         BorderThickness="0" Background="Transparent"
                         Click="Btn_Raqam"/>
-                <Button Width="60" Height="45" Content="Cancel" FontSize="18" Foreground="Blue"
+                <Button Width="60" Height="45" Content="Cancel" FontSize="15" Foreground="Blue"
                         BorderThickness="0" Background="Transparent"
                         x:Name="Cancel_btn" Click="Cancel_btn_Click"/>
             </WrapPanel>

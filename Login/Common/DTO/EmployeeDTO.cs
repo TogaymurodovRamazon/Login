@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Login.Common.DTO
 {
-    public class EmployeCreateDTO : BaseDTO
+    public class EmployeeDTO : BaseDTO
     {
         public string UserName { get; set; }
         public string PIN { get; set; }
@@ -22,6 +22,7 @@ namespace Login.Common.DTO
         public DateTime BornDate { get; set; }
         public DateTime HireDate { get; set; }
         public EmployePole EmployeRole { get; set; }
+        public string FullName { get; set; }
 
 
     }

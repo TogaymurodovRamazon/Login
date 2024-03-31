@@ -39,7 +39,8 @@
                       SelectionMode="Single"
                       AlternationCount="2"
                       HeadersVisibility="Column"
-                      ItemsSource="{Binding res, Mode=TwoWay}" SelectionChanged="users_datagrid_SelectionChanged">
+                      ItemsSource="{Binding res, Mode=TwoWay}" 
+                      SelectionChanged="users_datagrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="№" Binding="{Binding Id}" IsReadOnly="True" Width="0.5*"></DataGridTextColumn>
                     <DataGridTextColumn Header="Fullname" Binding="{Binding FullName}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>

@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
         WindowStyle="None"
-        Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <Grid>
@@ -35,15 +34,15 @@
 
         <DockPanel Grid.Row="0" Grid.Column="0"
                     Grid.RowSpan="9" Grid.ColumnSpan="8" 
-                    x:Name="Asosiysi_view" Visibility="Collapsed">
-            <local:Asosiysi x:Name="Asosiy_Page" Height="450" Width="600" >
+                    x:Name="Asosiysi_view" Visibility="Visible">
+            <local:Asosiysi x:Name="Asosiy_Page" Height="Auto"  Width="Auto" >
                 
             </local:Asosiysi>
         </DockPanel>
         <DockPanel Grid.Row="0" Grid.Column="0"
                     Grid.RowSpan="9" Grid.ColumnSpan="8" 
                     x:Name="Login_view" Visibility="Collapsed">
-            <local:LoginPage x:Name="Login_Page" Height="450" Width="600">
+            <local:LoginPage x:Name="Login_Page" Height="Auto" Width="Auto">
 
             </local:LoginPage>
         </DockPanel>
@@ -51,7 +50,7 @@
         <DockPanel Grid.Row="0" Grid.Column="0"
                     Grid.RowSpan="9" Grid.ColumnSpan="8" 
                     x:Name="PinKod_view" Visibility="Collapsed">
-            <local:PinKodPage x:Name="PinKod_Page"  Height="450" Width="600">
+            <local:PinKodPage x:Name="PinKod_Page"  Height="Auto" Width="Auto">
                 
             </local:PinKodPage>
         </DockPanel>
@@ -91,8 +90,12 @@
 
         <DockPanel Grid.Row="0" Grid.Column="0"
                     Grid.RowSpan="9" Grid.ColumnSpan="8" 
-                   x:Name="employee_view" Visibility="Visible">
-            <local:UserListController x:Name="employee_control" Width="Auto" Height="Auto"></local:UserListController>
+                   x:Name="employee_view" Visibility="Collapsed">
+            <local:UserListController x:Name="employee_control" Width="Auto" Height="Auto">
+                
+            </local:UserListController>
         </DockPanel>
+        
+        
     </StackPanel>
 </Window>

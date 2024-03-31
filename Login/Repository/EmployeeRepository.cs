@@ -19,10 +19,10 @@ namespace Login.Repository
         }
         public async Task<Employee> CreateEmployee(Employee employee)
         {
-            var hasCopy=await _dbContext.Employees.AnyAsync(x=>x.User.UserName == employee.User.UserName);
+            var hasCopy=await _dbContext.Employees.AnyAsync(a => !a.IsDeleted && a.User.UserName == employee.User.UserName);
             if (hasCopy)
                 throw new Exception("Currect username alredy exist!");
-            await _dbContext.AddAsync(employee);
+            await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync();
             return employee;
 
@@ -36,11 +36,17 @@ namespace Login.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Employee> GetEmployeeById(long id)
+        public async Task<List<Employee>> GetAllEmployees()
         {
-            if (id < 0)
+            return await _dbContext.Employees.Where(a => !a.IsDeleted).Include(a => a.User).
+                ThenInclude(a => a.Person).ToListAsync();
+        }
+
+        public async Task<Employee> GetEmployeeById(long Id)
+        {
+            if (Id < 0)
                 throw new Exception("Id is low from 0!");
-            return await _dbContext.Employees.FirstOrDefaultAsync(a => !a.IsDeleted && a.Id == id);
+            return await _dbContext.Employees.FirstOrDefaultAsync(a => !a.IsDeleted && a.Id == Id);
         }
 
         public async Task<Employee> UpdateEmployee(Employee employee)

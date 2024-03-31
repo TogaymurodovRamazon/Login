@@ -9,8 +9,11 @@ namespace Login.Service
 {
    public interface IEmployeService
     {
-        Task CreateEmployee(EmployeCreateDTO employeCreateDTO);
-        Task UpdateEmployee(long Id, EmployeCreateDTO employeCreateDTO);
+        Task CreateEmployee(EmployeeDTO employeCreateDTO);
+        Task UpdateEmployee(long Id, EmployeeDTO employeCreateDTO);
         Task DeleteEmployee(long Id);
+        public Task<List<EmployeeDTO>> GetAllEmployee();
+
+        public Task<EmployeeDTO> GetEmployeeById(long Id);
     }
 }

@@ -55,7 +55,7 @@
                         <Button Width="100" Height="40" Margin="6 5 0 0" Background="DodgerBlue"
                                 Content="Page 4" FontSize="15" Foreground="Snow"/>
                         <Button Width="100" Height="40" Margin="6 5 2 0" Background="DodgerBlue"
-                                Content="+" FontSize="20" Foreground="Snow"/>
+                                Content="Page 5" FontSize="20" Foreground="Snow"/>
                     </DockPanel>
 
                     <DataGrid Height="185" Margin="10 10 0 0">

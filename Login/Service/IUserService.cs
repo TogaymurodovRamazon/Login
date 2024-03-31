@@ -1,4 +1,5 @@
 ﻿using Login.Common.DTO;
+using Login.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

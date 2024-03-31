@@ -30,5 +30,17 @@ namespace Login
         {
             _mainWindow = mainWindow;
         }
+
+        private void log_btn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.Kassa_view.Visibility = Visibility.Collapsed;
+            _mainWindow.Login_view.Visibility = Visibility.Visible;
+        }
+
+        private void sozlama_btn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.Kassa_view.Visibility = Visibility.Collapsed;
+            _mainWindow.Setting_view.Visibility = Visibility.Visible;
+        }
     }
 }
