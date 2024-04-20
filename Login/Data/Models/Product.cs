@@ -11,9 +11,6 @@ namespace Login.Data.Models
     {
         public string Name { get; set; }
 
-        public long? DiscountId { get; set; }
-        public virtual Discount Discount { get; set; }
-
         // public string MxikCode { get; set; }
         //public int GroupId { get; set; }
         //public int MeasuredId { get; set; }
@@ -23,13 +20,21 @@ namespace Login.Data.Models
         //public int TaxType { get; set; }
         public int AmountInPackage { get; set; }
         //public bool Marker { get; set; }
-        public int CompanyId { get; set; }
         //public string Sku { get; set; }
         public int Amount { get; set; }
         public int ActualPrice { get; set; }
         public int Price { get; set; }
         public int PriceOfPiece { get; set; }
         public bool Selected { get; set; }
+
+        public long? CompanyId { get; set; }
+        public virtual Company? Company { get; set; }
+
+        public long? DiscountId { get; set; }
+        public virtual Discount? Discount { get; set; }
+
+        public long? CategoryId { get; set; }
+        public virtual ProductCategory? Category { get; set; }
 
     }
 }

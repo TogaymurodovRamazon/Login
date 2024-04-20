@@ -9,6 +9,6 @@ namespace Login.Data.Enum
      public enum EmployePole
     {
         Cashier=0,
-        Manager
+        Admin
     }
 }

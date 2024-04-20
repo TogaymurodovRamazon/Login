@@ -42,5 +42,23 @@ namespace Login
             _mainWindow.Kassa_view.Visibility = Visibility.Collapsed;
             _mainWindow.Setting_view.Visibility = Visibility.Visible;
         }
+
+        private void kassa_btn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.Kassa_view.Visibility= Visibility.Collapsed;
+            _mainWindow.Menyu_view.Visibility = Visibility.Visible;
+        }
+
+        private void store_btn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.Kassa_view.Visibility= Visibility.Collapsed;
+            _mainWindow.Store_view.Visibility = Visibility.Visible;
+        }
+
+        private void malumot_btn_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.Kassa_view.Visibility=Visibility.Collapsed;
+            _mainWindow.Setting_View.Visibility= Visibility.Visible;
+        }
     }
 }

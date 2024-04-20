@@ -90,7 +90,7 @@
                 <TextBlock Text="EmployeeRole" VerticalAlignment="Center"/>
                 <ComboBox x:Name="employerole_combo" Width="250" FontSize="10" Margin="5" 
                           materialDesign:HintAssist.Hint="EmployeeRole">
-                    <ComboBoxItem IsSelected="True" Content="Cashier"/>
+                    <ComboBoxItem  Content="Cashier"/>
                     <ComboBoxItem Content="Admin" />
                 </ComboBox>
                 

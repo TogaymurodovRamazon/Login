@@ -25,6 +25,8 @@ namespace Login.Pages
         EmployeService _employeService { get; set; }
         long employeId { get; set; } = 0;
 
+        bool isDisabled { get; set; }= false;
+
         public UserCreateForm()
         {
             InitializeComponent();
@@ -36,17 +38,18 @@ namespace Login.Pages
             _employeService = employeService;
         }
 
-        public async void SetEmployeeDate(long Id)
+        public async void SetEmployeeDate(long Id, bool isView=false)
         {
             if (Id > 0)
             {
+                DisableForm(isView);
                 employeId = Id;
                 var employe = await _employeService.GetEmployeeById(Id);
                 if(employe != null)
                 {
                     jobtitle_txt.Text = employe.JobTitle;
                     enrollnumber_txt.Text = employe.EnrollNumber.ToString();
-                    hiredate_picter.SelectedDate = employe.HireDate;
+                   
                     employerole_combo.SelectedItem = employe.EmployeRole == Data.Enum.EmployePole.Cashier ?
                         employerole_combo.Items[0] : employerole_combo.Items[1];
 
@@ -54,10 +57,11 @@ namespace Login.Pages
                     password_txt.Text = employe.Password;
                     pin_txt.Text = employe.PIN;
 
-                    fathername_txt.Text = employe.FirstName;
+                    firstname_txt.Text = employe.FirstName;
                     lastname_txt.Text = employe.LastName;
                     fathername_txt.Text= employe.FatherName;
                     borndate_picter.SelectedDate = employe.BornDate;
+                    hiredate_picter.SelectedDate = employe.HireDate;
                     address_txt.Text = employe.Addres;
                     phonenumber_txt.Text = employe.PhoneNumber;
                 }
@@ -74,11 +78,11 @@ namespace Login.Pages
                     JobTitle = jobtitle_txt.Text,
                     EnrollNumber = long.Parse(enrollnumber_txt.Text),
                     HireDate = hiredate_picter.SelectedDate.Value,
-                    EmployeRole = employerole_combo.SelectedValue == "Cashier" ?
-                    Data.Enum.EmployePole.Cashier : Data.Enum.EmployePole.Manager,
+                    EmployeRole = employerole_combo.SelectedValue == employerole_combo.Items[0] ?
+                    Data.Enum.EmployePole.Cashier : Data.Enum.EmployePole.Admin,
                     // username
-                    UserName = username_txt.Text,
-                    Password = password_txt.Text,
+                    UserName = employerole_combo.SelectedItem == employerole_combo.Items[1] ? username_txt.Text : "",
+                    Password = employerole_combo.SelectedItem== employerole_combo.Items[1] ? password_txt.Text :"",
                     PIN = pin_txt.Text,
 
                     //person
@@ -106,6 +110,25 @@ namespace Login.Pages
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void DisableForm(bool isReadonly)
+        {
+            jobtitle_txt.IsEnabled= !isReadonly;
+            enrollnumber_txt.IsEnabled= !isReadonly;
+            employerole_combo.IsEnabled= !isReadonly;
+            hiredate_picter.IsEnabled= !isReadonly;
+            username_txt.IsEnabled = !isReadonly;
+            firstname_txt.IsEnabled= !isReadonly;
+            lastname_txt.IsEnabled = !isReadonly;
+            fathername_txt.IsEnabled= !isReadonly;
+            address_txt.IsEnabled = !isReadonly;
+            phonenumber_txt.IsEnabled= !isReadonly;
+            password_txt.IsEnabled = !isReadonly;
+            pin_txt.IsEnabled= !isReadonly;
+            borndate_picter.IsEnabled = !isReadonly;
+            save_btn.Visibility = isReadonly ? Visibility.Hidden : Visibility.Visible;
+        }
+
 
         public void ClearnForm()
         {

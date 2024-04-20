@@ -38,15 +38,23 @@ namespace Login
             {
                 services.AddDbContext<AppDBContext>();
                 services.AddAutoMapper(typeof(IMapper));
+                
+                services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
                 services.AddScoped<IUserService, UserService>();
                 services.AddScoped<IUserRepository, UserRepository>();
-                services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
                 services.AddScoped<IEmployeeRepository, EmployeeRepository>();
                 services.AddScoped<EmployeService>();
+
+                services.AddScoped<IProductService, ProductService>();
+                services.AddScoped<IProductRepository, ProductRepository>();
                 
+                services.AddScoped<ICheckPrintRepository, CheckPrintRepository>();
+                services.AddScoped<ICheckPrintService, CheckPrintService>();
 
                 services.AddTransient<MainWindow>();
+              
 
             }).Build();
         }
@@ -55,7 +63,7 @@ namespace Login
         {
             await AppHost.StartAsync();
 
-            var startupFrom=AppHost.Services.GetRequiredService<MainWindow>();
+           var startupFrom=AppHost.Services.GetRequiredService<MainWindow>();
             startupFrom.Show();
 
             base.OnStartup(e);

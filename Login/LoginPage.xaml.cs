@@ -81,7 +81,6 @@ namespace Login
                 {
                     _mainWindow.Kassa_view.Visibility = Visibility.Visible;
                     _mainWindow.Login_view.Visibility = Visibility.Collapsed;
-                    MessageBox.Show("Welcom to my Point of Sales");
                     txtlogin.Text=txtpassword.Password="";
                 }
                 else

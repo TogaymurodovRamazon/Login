@@ -1,4 +1,5 @@
 ﻿using Login.Common.DTO;
+using Login.Data.Models;
 using Login.IRepository;
 using System;
 using System.Collections.Generic;
@@ -15,34 +16,102 @@ namespace Login.Service
         {
            this._productRepository = productRepository;
         }
-        public Task<ProductDTO> CreateProduct(ProductDTO product)
+
+        public async Task<ProductDTO> CreateProduct(ProductDTO product)
         {
-            throw new NotImplementedException();
+            var newProduct = new Product()
+            {
+                Name=product.Name,
+                Barcode=product.Barcode,
+                AmountInPackage=product.AmountInPackage,
+                Amount=product.Amount,
+                ActualPrice=product.ActualPrice,
+                Price=product.Price,
+                PriceOfPiece=product.PriceOfPiece,
+                Selected=product.Selected 
+            };
+            await _productRepository.CreateProduct(newProduct);
+            return product;
         }
 
-        public Task DeleteProduct(long id)
+        public async Task DeleteProduct(long id)
         {
-            throw new NotImplementedException();
+            if (id > 0)
+               await _productRepository.DeleteProduct((int) id);
+            
         }
 
-        public Task<List<ProductDTO>> GetAllProducts()
+        public async Task<List<ProductDTO>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = await _productRepository.GetAllProducts();
+            if(products != null && products.Any())
+            {
+                return products.Select(a=>new ProductDTO()
+                {
+                    Id=a.Id,
+                    Name=a.Name,
+                    Barcode=a.Barcode,
+                    AmountInPackage=a.AmountInPackage,
+                    Amount=a.Amount,
+                    ActualPrice=a.ActualPrice,
+                    Price=a.Price,
+                    PriceOfPiece=a.PriceOfPiece,
+                    Selected=a.Selected
+                }).ToList();     
+            }
+            return new List<ProductDTO>();
         }
 
-        public Task<ProductDTO> GetProductById(long id)
+        public async Task<ProductDTO> GetProductById(long id)
         {
-            throw new NotImplementedException();
+            var res = await _productRepository.GetById((int)id);
+            if(res != null)
+            {
+                return new ProductDTO()
+                {
+                    Id = res.Id,
+                    Name = res.Name,
+                    Barcode = res.Barcode,
+                    AmountInPackage=res.AmountInPackage,
+                    Amount=res.Amount,
+                    ActualPrice=res.ActualPrice,
+                    PriceOfPiece=res.PriceOfPiece,
+                    Selected=res.Selected,
+                    Price = res.Price
+                };
+            }
+            else
+            {
+                throw new Exception("Product not found!");
+            }
         }
 
-        public Task<List<ProductForSearchDTO>> GetProductForSearche(string searche)
+        public async Task<List<ProductForSearchDTO>> GetProductForSearche(string searche)
         {
-            throw new NotImplementedException();
+            return await _productRepository.GetProductByName(searche);
         }
 
-        public Task<ProductDTO> UpdateProduct(long id, ProductDTO product)
+        public async Task<ProductDTO> UpdateProduct(long id, ProductDTO product)
         {
-            throw new NotImplementedException();
+            var all = await _productRepository.GetById((int)id);
+            if (all != null)
+            {
+                all.Name = product.Name;
+                all.Barcode = product.Barcode;
+                all.ActualPrice = product.ActualPrice;
+                all.PriceOfPiece= product.PriceOfPiece;
+                all.Selected= product.Selected;
+                all.Price = product.Price;
+                all.Amount = product.Amount;
+                all.ActualPrice = product.ActualPrice;
+
+                await _productRepository.UpdateProduct(all);
+                return product;
+            }
+            else
+            {
+                throw new Exception("Product not found!");
+            }
         }
     }
 }

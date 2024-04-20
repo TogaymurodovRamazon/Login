@@ -16,5 +16,10 @@ namespace Login.Data.Models
         public DiscountType AmountType { get; set; }  // Percent,       Count,     Amount
 
         public virtual List<Product> Products { get; set; }
+
+        public DiscountStatus DiscountStatus { get; set; }
+
+        public DateTime StarDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

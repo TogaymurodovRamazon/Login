@@ -19,7 +19,8 @@ namespace Login.Repository
         }
         public async Task<Employee> CreateEmployee(Employee employee)
         {
-            var hasCopy=await _dbContext.Employees.AnyAsync(a => !a.IsDeleted && a.User.UserName == employee.User.UserName);
+            var hasCopy = await _dbContext.Employees.AnyAsync(a => !a.IsDeleted && (employee.EmployeRole == Data.Enum.EmployePole.Admin ?
+            a.User.UserName == employee.User.UserName : false));
             if (hasCopy)
                 throw new Exception("Currect username alredy exist!");
             await _dbContext.Employees.AddAsync(employee);

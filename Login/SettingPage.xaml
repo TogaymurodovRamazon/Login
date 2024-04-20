@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login"
+             xmlns:pages="clr-namespace:Login.Pages"
+             xmlns:window="clr-namespace:Login.Windows"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="Snow">
     
@@ -11,46 +13,105 @@
         <ResourceDictionary Source="Controls.xaml"/>
     </UserControl.Resources>
     
-    <Grid>
+    <Grid x:Name="Setting_grid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="580*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0" Background="DodgerBlue">
             <StackPanel>
-                <TextBlock Text="Settings" FontSize="30" Foreground="Snow"
-                           HorizontalAlignment="Center" Margin="0 20 0 0"/>
-                <Button Content="Xodimlar" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"
+                <Grid>
+                    <Button Width="30" HorizontalAlignment="Left" Background="Transparent" 
+                            BorderThickness="0" Margin="15 0 0 0"
+                            x:Name="qaytish_btn" Click="qaytish_btn_Click">
+                        <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\back.jpg" Width="30" Height="30" />
+                    </Button>
+                </Grid>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <Button Width="30" Height="30" Content="◫" FontSize="25"
+                                Foreground="Red" BorderThickness="0" Background="Transparent"
+                                x:Name="Kichik_Katta" Click="Kichik_Katta_Click" Margin="-5 0 0 0">
+                        </Button>
+                        <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\sozlama.png" 
+                               Width="30" Height="30" Margin="5"/>
+                        <TextBlock Text=" Settings" FontSize="30" Foreground="Snow"
+                         HorizontalAlignment="Center" Margin="2"
+                                   VerticalAlignment="Center" TextAlignment="Center"/>
+                        
+                    </StackPanel>
+                    <Grid Width="190" Background="WhiteSmoke" Height="3" />
+                </StackPanel>
+                
+                <StackPanel>
+                    <Button Content="Xodimlar" Width="180" Height="30" Margin="0 15 0 0"
+                        Background="Transparent" BorderBrush="White" 
+                            Foreground="Snow" FontSize="20"
                         x:Name="employe_btn" Click="employe_btn_Click"/>
-                <Button Content="Check Sozlamalari" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="18"/>
-                <Button Content="Chegirma berish" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="18"/>
-                <Button Content="Mijozlar" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"/>
-                <Button Content="Kassa" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"/>
-                <Button Content="Til" Width="180" Height="30" Margin="0 20 0 0"
+                </StackPanel>
+                
+                <StackPanel>
+                    <Button Content="Check Sozlamalari" Width="180" Height="30" Margin="0 15 0 0"
+                        Background="Transparent" Foreground="Snow" FontSize="18"
+                            BorderBrush="White"
+                            x:Name="cheksozlamasi_btn" Click="cheksozlamasi_btn_Click"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Chegirma berish" Width="180" Height="30" Margin="0 15 0 0"
+                        Background="Transparent" Foreground="Snow" FontSize="18"
+                            BorderBrush="White"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Mijozlar" Width="180" Height="30" Margin="0 15 0 0"
                         Background="Transparent" Foreground="Snow" FontSize="20"
-                        x:Name="language_btn" Click="language_btn_Click"/>
-                <Button Content="Thems" Width="180" Height="30" Margin="0 20 0 0"
-                        Background="Transparent" Foreground="Snow" FontSize="20"/>
+                            BorderBrush="White"
+                            x:Name="mijoz_btn" Click="mijoz_btn_Click"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Kassa" Width="180" Height="30" Margin="0 15 0 0"
+                         Background="Transparent" Foreground="Snow" FontSize="20"
+                            BorderBrush="White"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Til" Width="180" Height="30" Margin="0 15 0 0"
+                     Background="Transparent" Foreground="Snow" FontSize="20" BorderBrush="White"
+                     x:Name="language_btn" Click="language_btn_Click"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Thems" Width="180" Height="30" Margin="0 15 0 0"
+                         Background="Transparent" Foreground="Snow" FontSize="20"
+                            BorderBrush="White"/>
+                </StackPanel>
+                
             </StackPanel>
         </DockPanel>
 
-        <DockPanel Grid.Column="1">
+        <Grid Grid.Column="1">
             <DockPanel Width="Auto" Height="Auto" x:Name="employees_doc" Visibility="Collapsed">
                 <local:UserListController x:Name="employees_control" Width="Auto" Height="Auto">
                     
                 </local:UserListController>  
             </DockPanel>
 
-            <DockPanel Width="Auto" Height="Auto" x:Name="language_doc" Visibility="Visible">
-               
+            <DockPanel Width="Auto" Height="Auto" x:Name="language_doc" Visibility="Collapsed">
+                <pages:LanguageControl x:Name="language_control">
+                    
+                </pages:LanguageControl>
+            </DockPanel>
+
+            <DockPanel Width="Auto" Height="Auto" x:Name="checksoz_doc" Visibility="Collapsed">
+                <window:CheckPrintListWindow x:Name="cheksozlama_control">
+                
+                </window:CheckPrintListWindow>
             </DockPanel>
             
-        </DockPanel>
+        </Grid>
         
     </Grid>
 </UserControl>

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Login.Data.Base
 {
-    public class BaseEntity
+    public class BaseEntity : AuditEntity
     {
         public long Id { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifeiledDate { get; set; }
+       
     }
 }

@@ -33,7 +33,7 @@ namespace Login.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -41,6 +41,8 @@ namespace Login.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CashBoxes");
                 });
@@ -65,7 +67,7 @@ namespace Login.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Printer")
@@ -82,6 +84,8 @@ namespace Login.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IsDeleted");
+
                     b.ToTable("CheckPrintingDatas");
                 });
 
@@ -97,7 +101,7 @@ namespace Login.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<long>("PersonId")
@@ -105,9 +109,41 @@ namespace Login.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IsDeleted");
+
                     b.HasIndex("PersonId");
 
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("Login.Data.Models.Company", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("Login.Data.Models.Discount", b =>
@@ -129,10 +165,19 @@ namespace Login.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("DiscountStatus")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StarDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -140,6 +185,8 @@ namespace Login.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Discounts");
                 });
@@ -165,7 +212,7 @@ namespace Login.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -176,6 +223,8 @@ namespace Login.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("UserId");
 
@@ -213,7 +262,7 @@ namespace Login.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
@@ -221,6 +270,8 @@ namespace Login.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Persons");
                 });
@@ -244,19 +295,22 @@ namespace Login.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CompanyId")
+                    b.Property<long?>("CategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long?>("CompanyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("DiscountId")
+                    b.Property<long?>("DiscountId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -274,9 +328,45 @@ namespace Login.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("DiscountId");
 
+                    b.HasIndex("IsDeleted");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Login.Data.Models.ProductCategory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("Login.Data.Models.User", b =>
@@ -291,7 +381,7 @@ namespace Login.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ModifeiledDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PIN")
@@ -310,6 +400,8 @@ namespace Login.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PersonId");
 
@@ -340,11 +432,21 @@ namespace Login.Migrations
 
             modelBuilder.Entity("Login.Data.Models.Product", b =>
                 {
+                    b.HasOne("Login.Data.Models.ProductCategory", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Login.Data.Models.Company", "Company")
+                        .WithMany("Products")
+                        .HasForeignKey("CompanyId");
+
                     b.HasOne("Login.Data.Models.Discount", "Discount")
                         .WithMany("Products")
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiscountId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Company");
 
                     b.Navigation("Discount");
                 });
@@ -360,7 +462,17 @@ namespace Login.Migrations
                     b.Navigation("Person");
                 });
 
+            modelBuilder.Entity("Login.Data.Models.Company", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("Login.Data.Models.Discount", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Login.Data.Models.ProductCategory", b =>
                 {
                     b.Navigation("Products");
                 });

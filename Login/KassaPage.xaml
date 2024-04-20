@@ -12,11 +12,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
-            <RowDefinition Height="90" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#2B2B2B">
-            <TextBlock Text="MainPage" Foreground="Snow" FontSize="18" Margin="20 0 0 0"/>
+        <Grid Grid.Row="0" >
+            <TextBlock Text="MainPage" Foreground="Black" HorizontalAlignment="Center" FontWeight="Heavy" FontSize="18" Margin="20 0 0 0"/>
         </Grid>
 
         <Grid Grid.Row="1" >
@@ -36,7 +36,7 @@
         </Grid>
         <Grid Grid.Row="2" >
             <StackPanel HorizontalAlignment="Left">
-                <Button Width="300" Height="230" Background="DarkBlue">
+                <Button x:Name="kassa_btn" Click="kassa_btn_Click" Width="300" Height="230" Background="DarkBlue">
                     <StackPanel>
                         <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\kassa.png"
                                Width="100" Height="100"/>
@@ -57,7 +57,7 @@
             </StackPanel>
 
             <WrapPanel HorizontalAlignment="Center" Margin="300 0 0 0" >
-                <Button Width="230" Height="55"  Background="DarkBlue" >
+                <Button x:Name="malumot_btn" Click="malumot_btn_Click" Width="230" Height="55"  Background="DarkBlue" >
                     <DockPanel>
                         <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\person.png"
                               Width="35" Height="35" HorizontalAlignment="Left" Margin="0 0 170 0" />
@@ -88,7 +88,7 @@
                     </DockPanel>
                 </Button>
                 
-                <Button Width="230" Height="55"  HorizontalAlignment="Right"
+                <Button x:Name="store_btn" Click="store_btn_Click"  Width="230" Height="55"  HorizontalAlignment="Right"
                         Margin="15 32 0 0" Background="DarkBlue">
                     <DockPanel >
                         <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\omborxona.png"

@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800" Background="Snow">
     
     <UserControl.Resources>
@@ -16,222 +18,372 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#2B2B2B">
-            <TextBlock Text="Kassa" Foreground="Snow" HorizontalAlignment="Center" FontSize="18"/>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Kassa" Foreground="Black" FontWeight="Heavy" HorizontalAlignment="Center" FontSize="18"/>
         </Grid>
         
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="270"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
                 <StackPanel>
-                    <Border HorizontalAlignment="Left" Width="250" Height="30" CornerRadius="10"
-                            Margin="40 10 0 0" BorderBrush="Blue" BorderThickness="2">
-                        <DockPanel>
-                        <TextBox Text="Assalomu Alaykum" FontSize="18" Foreground="DarkBlue"
-                         Padding="10 0 0 0" Width="220" Height="30" HorizontalAlignment="Left"  />
-                            <Image Source="/Resources/search.jpg" Height="20" Width="20" />
+                    
+                     
+                            <ComboBox Visibility="Visible"
+                                  x:Name="searchcombo"
+                                      
+                                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                                  Height="30" Width="300" FontSize="15"
+                                  Margin="30 0 0 0"
+                                      HorizontalAlignment="Left"
+                                  IsTextSearchEnabled="False"
+                                  Tag="Id" IsEditable="True"
+                                  SelectionChanged="searchcombo_SelectionChanged"
+                                  KeyUp="barCode_tbx_KeyUp" >
+                            </ComboBox>
+                            
+                        
 
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="Client:" FontSize="25" Foreground="DodgerBlue" 
+                                        Margin="20 10 0 0"/>
+                            <TextBlock Text="" FontSize="22" Foreground="BlueViolet"
+                                        Margin="15 10 0 0"/>
+                        </StackPanel>
+                    </DockPanel>
+
+                    <Viewbox HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button x:Name="page_1_btn" Width="100" Height="40" Margin="5 5 0 0"   Background="DodgerBlue" 
+                                    Foreground="Snow">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Page 1" FontSize="20" Foreground="Snow" HorizontalAlignment="Left" />
+                                    <materialDesign:PackIcon  Foreground="Snow" VerticalAlignment="Center" 
+                                                         HorizontalAlignment="Right" Kind="Close" Width="30" 
+                                                         Margin="10 0 0 0" Height="30"/>
+                        </StackPanel>
+                            </Button>
+
+                            <Button x:Name="page_2_btn" Width="100" Height="40" Margin="5 5 0 0"   Background="DodgerBlue" Foreground="Snow">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Page 2" FontSize="20" Foreground="Snow" HorizontalAlignment="Left" />
+                                    <materialDesign:PackIcon  Foreground="Snow" VerticalAlignment="Center" 
+                                 HorizontalAlignment="Right" Kind="Close" Width="30" 
+                                 Margin="10 0 0 0" Height="30"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="page_3_btn" Width="100" Height="40" Margin="5 5 0 0"   Background="DodgerBlue" Foreground="Snow">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Page 3" FontSize="20" Foreground="Snow" HorizontalAlignment="Left" />
+                                    <materialDesign:PackIcon  Foreground="Snow" VerticalAlignment="Center" 
+                                 HorizontalAlignment="Right" Kind="Close" Width="30" 
+                                 Margin="10 0 0 0" Height="30"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="page_4_btn" Width="100" Height="40" Margin="5 5 0 0"   Background="DodgerBlue" Foreground="Snow">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Page 4" FontSize="20" Foreground="Snow" HorizontalAlignment="Left" />
+                                    <materialDesign:PackIcon  Foreground="Snow" VerticalAlignment="Center" 
+                                 HorizontalAlignment="Right" Kind="Close" Width="30" 
+                                 Margin="10 0 0 0" Height="30"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="page_5_btn" Width="100" Height="40" Margin="5 5 0 0"   Background="DodgerBlue" Foreground="Snow">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Page 5" FontSize="20" Foreground="Snow" HorizontalAlignment="Left" />
+                                    <materialDesign:PackIcon  Foreground="Snow" VerticalAlignment="Center" 
+                                 HorizontalAlignment="Right" Kind="Close" Width="30" 
+                                 Margin="10 0 0 0" Height="30"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                    </Viewbox>
+
+                    <Viewbox x:Name="datagrid_viewbox">
+                        <DockPanel Background="Transparent">
+                            <DataGrid  Margin="0 10 5 10" x:Name="datagridview"
+                                   Background="#FCFCFC"
+                                   CanUserSortColumns="True"
+                                   AutoGenerateColumns="False"
+                                   CanUserAddRows="True"
+                                   ItemsSource="{Binding Path=Products}"
+                                   HorizontalGridLinesBrush="Transparent"
+                                   VerticalGridLinesBrush="Transparent" 
+                                       Height="950" Width="2500"
+                                       FontSize="50"
+                                       SelectionMode="Single"
+                                       RenderTransformOrigin="0.5 , 0.5">
+
+                                <DataGrid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleY="0"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform Y="-8.8"/>
+                                    </TransformGroup>
+                                </DataGrid.RenderTransform>
+
+                                <DataGrid.Columns >
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Index}" Width="150" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="№" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Barcode}" Width="350" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Shtirix Kodi" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Name}" Width="400" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Nomi" Width="450" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Price}" Width="260" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Narxi" Width="Auto" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Quantity}" Width="260" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Soni" Width="Auto" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Discount}" Width="400" >
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Chegirma %" Width="Auto" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=TotalPrice}" Width="320" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Summa" Width="Auto" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Path=Commet}" Width="230" Foreground="Black">
+                                        <DataGridTextColumn.Header>
+                                            <TextBlock Text="Izoh" Width="Auto" Foreground="DodgerBlue"/>
+                                        </DataGridTextColumn.Header>
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+
+                            </DataGrid>
                         </DockPanel>
-                    </Border>
+                    </Viewbox>
 
-                    <DockPanel>
-                        <TextBlock Text="Client:" FontSize="22" Foreground="DodgerBlue" 
-                                   Margin="20 10 0 0"/>
-                        <TextBlock Text="Hello World" FontSize="22" Foreground="BlueViolet"
-                                   Margin="15 10 0 0"/>
-                    </DockPanel>
-
-                    <DockPanel>
-                        <Button Width="100" Height="40" Margin="6 5 0 0" Background="DodgerBlue"
-                                Content="Page 1" FontSize="15" Foreground="Snow"/>
-                        <Button Width="100" Height="40" Margin="6 5 0 0" Background="DodgerBlue"
-                                Content="Page 2" FontSize="15" Foreground="Snow"/>
-                        <Button Width="100" Height="40" Margin="6 5 0 0" Background="DodgerBlue"
-                                Content="Page 3" FontSize="15" Foreground="Snow"/>
-                        <Button Width="100" Height="40" Margin="6 5 0 0" Background="DodgerBlue"
-                                Content="Page 4" FontSize="15" Foreground="Snow"/>
-                        <Button Width="100" Height="40" Margin="6 5 2 0" Background="DodgerBlue"
-                                Content="Page 5" FontSize="20" Foreground="Snow"/>
-                    </DockPanel>
-
-                    <DataGrid Height="185" Margin="10 10 0 0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="№" Width="50"/>
-                            <DataGridTextColumn Header="Shtrix Kod" Width="100"/>
-                            <DataGridTextColumn Header="Nomi" Width="80"/>
-                            <DataGridTextColumn Header="Narxi" Width="80"/>
-                            <DataGridTextColumn Header="Soni" Width="60"/>
-                            <DataGridTextColumn Header="Chegirma %" Width="110"/>
-                            <DataGridTextColumn Header="Summa" Width="80"/>
-                            <DataGridTextColumn Header="Izoh" Width="70"/>
-
-                        </DataGrid.Columns>
-
-                    </DataGrid>
-
-                    <Grid Margin="0 10 0 0">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30" />
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-less-than-100.png"
-                                   Width="30" Height="20" Margin="0 0 0 0"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <WrapPanel>
-                                <Button Width="90" Height="40" Margin="0 0 0 0" Background="DodgerBlue" Content="Tag 1"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 0 0 0" Background="DodgerBlue" Content="Tag 2"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 0 0 0" Background="DodgerBlue" Content="Tag 3"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 0 0 0" Background="DodgerBlue" Content="Tag 4"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 0 0 0" Background="DodgerBlue" Content="Tag 5"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="0 2 0 0" Background="DodgerBlue" Content="Tag 6"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 2 0 0" Background="DodgerBlue" Content="Tag 7"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 2 0 0" Background="DodgerBlue" Content="Tag 8"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 2 0 0" Background="DodgerBlue" Content="Tag 9"
-                                        FontSize="18" Foreground="Snow"/>
-                                <Button Width="90" Height="40" Margin="5 2 0 0" Background="DodgerBlue" Content="Tag 10"
-                                        FontSize="18" Foreground="Snow"/>
-                            </WrapPanel>
+
+                        <Viewbox Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="20" Height="50" BorderThickness="0" >
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-less-than-100.png"
+                                            Width="30" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Button>
+                            </StackPanel>
+                        </Viewbox>
+                        <Grid Grid.Column="1" x:Name="tags_grid">
+
+                            <StackPanel Orientation="Horizontal">
+                                
+                                <StackPanel Orientation="Vertical">
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 1" x:Name="tag1_btn" FontSize="18" Foreground="Snow"/>
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 2" x:Name="tag2_btn" FontSize="18" Foreground="Snow"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 3" x:Name="tag3_btn" FontSize="18" Foreground="Snow"/>
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 4" x:Name="tag4_btn" FontSize="18" Foreground="Snow"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 5" x:Name="tag5_btn" FontSize="18" Foreground="Snow"/>
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 6" x:Name="tag6_btn" FontSize="18" Foreground="Snow"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 7" x:Name="tag7_btn" FontSize="18" Foreground="Snow"/>
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 8" x:Name="tag8_btn" FontSize="18" Foreground="Snow"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 9" x:Name="tag9_btn" FontSize="18" Foreground="Snow"/>
+                                    <Button Width="88" Height="40" Margin="2" Background="DodgerBlue" 
+                                            Content="Tag 10" x:Name="tag10_btn" FontSize="18" Foreground="Snow"/>
+                                </StackPanel>
+
+                            </StackPanel>
+
 
                         </Grid>
-                        <Grid Grid.Column="2">
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-more-than-100.png"
-                                   Width="30" Height="20"/>
+                        <Viewbox Grid.Column="2">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="20" Height="50" BorderThickness="0">
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-more-than-100.png"
+                                           Width="30" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                        </Grid>
-                        
+                                </Button>
+                            </StackPanel> 
+                        </Viewbox>
+
                     </Grid>
+
                 </StackPanel>
                 
             </Grid>
 
             <Grid Grid.Column="1">
-                <WrapPanel>
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\pencil.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Tahrirlash" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="(F1)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                <StackPanel>
+                    <WrapPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="edit_btn" Click="edit_btn_Click" 
+         Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\pencil.png"
+                Width="30" Height="30"/>
+                                    <TextBlock Text="Tahrirlash" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="(F1)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="kategori_btn" Click="kategori_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-tags-64.png"
+                Width="30" Height="30"/>
+                                    <TextBlock Text="Kategoriyalar" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="(F2)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="TizChiq_btn" Click="TizChiq_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-logout-100.png"
+                Width="30" Height="30"/>
+                                    <TextBlock Text="Tizimdan" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="chiqish (F3)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                    </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-tags-64.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Kategoriyalar" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="(F2)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                        </StackPanel> 
-                    </Button>
+                        <StackPanel Orientation="Horizontal" >
+                            <Button x:Name="qosh_btn" Click="qosh_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel VerticalAlignment="Center" Margin="0 0 0 20">
+                                    <TextBlock Text="+" FontSize="80" Foreground="#39459F" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\icons8-logout-100.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Tizimdan" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="chiqish (F3)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                            <Button x:Name="clint_btn" Click="clint_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\customer-2.png"
+                Width="30" Height="30"/>
+                                    <TextBlock Text="Mijozlar" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="(F4)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="clint_card_btn" Click="clint_card_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\credit-card.png"
+                Width="30" Height="30"/>
+                                    <TextBlock Text="Mijozlar " HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="kartasi (F5)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                    </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\puls.png"
-                                   Width="40" Height="40" />
+                        <StackPanel Orientation="Horizontal">
+
+                            <Button x:Name="ayirish_btn" Click="ayirish_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel VerticalAlignment="Center" Margin="0 0 0 20">
+                                    <TextBlock Text="-" FontSize="100" Foreground="#39459F" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="return_btn" Click="return_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\back.png"
+               Width="30" Height="30"/>
+                                    <TextBlock Text="Qaytarish" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="(F6)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="chegirma_btn" Click="chegirma_btn_Click" Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
+                                <StackPanel>
+                                    <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\discount.png"
+               Width="30" Height="30"/>
+                                    <TextBlock Text="Chegirma" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                    <TextBlock Text="(F7)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                    </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\customer-2.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Mijozlar" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="(F4)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button Width="250" Height="40" 
+        Margin="5 5 0 0" Background="Transparent">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Barchasi:" Foreground="Blue" FontSize="15" Margin="0 0 70 0" 
+                                         VerticalAlignment="Center"/>
+                                    <Label Content="" x:Name="all_lebl" Foreground="Blue" FontSize="15" Margin="5 0 0 0" 
+                                         VerticalAlignment="Center"/>
+                                    <Label x:Name="valyuta_txt1" Content="UZS" HorizontalAlignment="Right" Foreground="Blue"
+                                         FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" Margin="50 0 5 0" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                    </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\credit-card.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Mijozlar " HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="kartasi (F5)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
+                        <StackPanel Orientation="Horizontal" >
+                            <Button Width="250" Height="40" 
+                 Margin="5 5 0 0" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Label Content="Chegirma b-n:" Foreground="Blue" FontSize="15" Margin="0 0 60 0"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label x:Name="final_sum_lbl" Content="" Foreground="Blue" FontSize="15" Margin="0 0 0 0" 
+                                          VerticalAlignment="Center"/>
+                                    <Label x:Name="valyuta_txt" Content="UZS" HorizontalAlignment="Right" Foreground="Blue"
+                                          FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" Margin="30 0 5 0" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                    </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\munus.png"
-                               Width="50" Height="40"/>
-                    </Button>
+                        <Button x:Name="selected_payment_btn" Click="selected_payment_btn_Click" 
+     Width="250" Margin="5 5 0 0" Background="Transparent">
+                            <StackPanel Orientation="Horizontal" >
+                                <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\credit-card-3.png"
+                Width="30" Height="30" Margin="15 0 0 0"/>
+                                <TextBlock Text="To'lovni tanlash (F10)" Foreground="Blue" FontSize="15" Margin="15 0 0 0" 
+                    VerticalAlignment="Center" FontWeight="DemiBold"/>
+                            </StackPanel>
+                        </Button>
 
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\back.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Qaytarish" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="(F6)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                        </StackPanel>
-                    </Button>
-                    
-                    <Button Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
-                        <StackPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\discount.png"
-                                   Width="30" Height="30"/>
-                            <TextBlock Text="Chegirma" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                            <TextBlock Text="(F7)" HorizontalAlignment="Center" Foreground="DodgerBlue"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Border Width="250" Height="40" BorderBrush="Blue" BorderThickness="2"
-                            CornerRadius="10" Margin="5 5 0 0">
-                        <DockPanel>
-                            <TextBlock Text="Barchasi:" Foreground="Blue" FontSize="15" Margin="5 0 0 0" 
-                                       VerticalAlignment="Center"/>
-                            <TextBlock Text="250 000" Foreground="Blue" FontSize="15" Margin="5 0 0 0" 
-                                       VerticalAlignment="Center"/>
-                            <TextBlock Text="UZS" HorizontalAlignment="Right" Foreground="Blue"
-                                       FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" Margin="0 0 5 0" />
-                        </DockPanel>
-                    </Border>
-                    
-                    <Border Width="250" Height="40" BorderBrush="Blue" BorderThickness="2"
-                            CornerRadius="10" Margin="5 5 0 0">
-                        <DockPanel>
-                            <TextBlock Text="Chegirma b-n:" Foreground="Blue" FontSize="15" Margin="5 0 0 0" 
-                                       VerticalAlignment="Center"/>
-                            <TextBlock Text="50 000" Foreground="Blue" FontSize="15" Margin="5 0 0 0" 
-                                       VerticalAlignment="Center"/>
-                            <TextBlock Text="UZS" HorizontalAlignment="Right" Foreground="Blue"
-                                       FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" Margin="0 0 5 0" />
-                        </DockPanel>
-                    </Border>
-
-                    <Border Width="250" Height="40" BorderBrush="Blue" BorderThickness="2"
-                            CornerRadius="10" Margin="5 5 0 0">
-                        <DockPanel>
-                            <Image Source="D:\2 C#\Humoyun Aka\WPF\Login\Login\Resources\Icons\credit-card-3.png"
-                                   Width="30" Height="30" Margin="15 0 0 0"/>
-                            <TextBlock Text="To'lovni tanlash (F10)" Foreground="Blue" FontSize="15" Margin="15 0 0 0" 
-                                       VerticalAlignment="Center" FontWeight="DemiBold"/>
-                             </DockPanel>
-                    </Border>
-
-                </WrapPanel> 
-                
+                    </WrapPanel>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

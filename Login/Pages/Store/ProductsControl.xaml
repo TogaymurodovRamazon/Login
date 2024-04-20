@@ -5,8 +5,81 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login.Pages.Store"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="450" d:DesignWidth="750" Background="White">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" 
+                        Height="25" Margin="10 0 10 0" >
+                <Button Content="Create" Height="25" Foreground="White" Background="#4D638C"
+                        x:Name="create_btn" Click="create_btn_Click">
+
+                </Button>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1">
+            <DataGrid x:Name="products_datagrid"
+                     AutoGenerateColumns="False"
+                      Width="Auto"
+                      GridLinesVisibility="Horizontal"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      IsReadOnly="True"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False"
+                      Background="#ffffff"
+                      Margin="10"
+                      BorderThickness="1"
+                      SelectionMode="Single"
+                      AlternationCount="2"
+                      HeadersVisibility="Column"
+                      ItemsSource="{Binding res, Mode=TwoWay}"
+                 SelectionChanged="product_datagrid_SelectionChanged"
+                 MouseDoubleClick="products_datagrid_MouseDoubleClick"  >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" IsReadOnly="True" Width="0.5*"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" IsReadOnly="True" Width="1.5*"/>
+                    <DataGridTextColumn Header="BarCode" Binding="{Binding Path=BarCode}" IsReadOnly="True" Width="1.5*"/>
+                    <DataGridTextColumn Header="ActualPrice" Binding="{Binding Path=ActualPrice}" IsReadOnly="True" Width="1.5*"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}" IsReadOnly="True" Width="1.5*"/>
+                    
+                    <DataGridTemplateColumn Width="*" >
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="Edit"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Background="#4D638C" Foreground="White" Height="25"
+                                        x:Name="edit_btn" Click="edit_btn_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="*" >
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="Delete"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Background="#4D638C" Foreground="White" Height="25"
+                                         x:Name="delete_btn" Click="delete_btn_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid> 
+        </DockPanel>
+        
     </Grid>
 </UserControl>

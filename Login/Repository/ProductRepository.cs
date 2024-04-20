@@ -16,7 +16,7 @@ namespace Login.Repository
         private readonly AppDBContext _dBContext;
         public ProductRepository(AppDBContext dBContext)
         {
-            _dBContext = dBContext;
+            this. _dBContext = dBContext;
         }
 
         public async Task<Product> CreateProduct(Product product)
@@ -25,13 +25,14 @@ namespace Login.Repository
                 throw new ArgumentNullException("Product model mustn't be null");
             else
             {
-                var hasCopy = await _dBContext.Products.AnyAsync(a => a.Name == product.Name || a.Barcode==product.Barcode);
+                var hasCopy = await _dBContext.Products.AnyAsync(a => a.Name.ToLower() == product.Name.ToLower() || a.Barcode==product.Barcode);
                 if (hasCopy)
                     throw new Exception("Product alredy exist!");
                 else
                 {
                     await _dBContext.Products.AddAsync(product);
                     await _dBContext.SaveChangesAsync();
+                    //return product;
                 }
             }
             return product;
@@ -58,8 +59,9 @@ namespace Login.Repository
 
         public async Task<Product> GetById(int id)
         {
-           return await _dBContext.Products.FirstOrDefaultAsync(a=>!a.IsDeleted && a.Id == id);
-           
+           var all= await _dBContext.Products.FirstOrDefaultAsync(a=>!a.IsDeleted && a.Id == id);
+            await _dBContext.SaveChangesAsync();
+            return all;
         }
 
         public async Task<List<ProductForSearchDTO>> GetProductByName(string name)

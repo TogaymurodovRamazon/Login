@@ -4,83 +4,88 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
+        xmlns:pages="clr-namespace:Login.Pages"
+        xmlns:store="clr-namespace:Login.Pages.Store"
+        xmlns:window="clr-namespace:Login.Windows"
         mc:Ignorable="d"
-        WindowStyle="None"
+        
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition  Height="*"/>
+                <RowDefinition  Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         </Grid>
-
         <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                     x:Name="Asosiysi_view" Visibility="Visible">
-            <local:Asosiysi x:Name="Asosiy_Page" Height="Auto"  Width="Auto" >
+            <local:Asosiysi x:Name="Asosiy_Page">
                 
             </local:Asosiysi>
         </DockPanel>
         <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                     x:Name="Login_view" Visibility="Collapsed">
-            <local:LoginPage x:Name="Login_Page" Height="Auto" Width="Auto">
+            <local:LoginPage x:Name="Login_Page" >
 
             </local:LoginPage>
         </DockPanel>
 
         <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                     x:Name="PinKod_view" Visibility="Collapsed">
-            <local:PinKodPage x:Name="PinKod_Page"  Height="Auto" Width="Auto">
+            <local:PinKodPage x:Name="PinKod_Page"  >
                 
             </local:PinKodPage>
         </DockPanel>
 
         <DockPanel  Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                     x:Name="Menyu_view" Visibility="Collapsed">
             <local:Menyu x:Name="Menyu_Page" Height="450" Width="800">
 
             </local:Menyu>
         </DockPanel>
 
-        <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+        <Viewbox  Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                    x:Name="Kassa_view" Visibility="Collapsed">
             <local:KassaPage x:Name="Kassa_Page" Height="450" Width="800" >
 
             </local:KassaPage>
-        </DockPanel>
+        </Viewbox>
 
-        <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+        <Viewbox Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                    x:Name="Setting_view" Visibility="Collapsed">
             <local:SettingPage x:Name="Setting_Page" Height="450" Width="800">
 
             </local:SettingPage>
-        </DockPanel>
+        </Viewbox>
 
         <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                    x:Name="Xodim_view" Visibility="Collapsed">
             <local:XodimControl x:Name="Xodim_Control" Height="450" Width="600">
 
@@ -89,13 +94,37 @@
         </DockPanel>
 
         <DockPanel Grid.Row="0" Grid.Column="0"
-                    Grid.RowSpan="9" Grid.ColumnSpan="8" 
+                    Grid.RowSpan="10" Grid.ColumnSpan="10" 
                    x:Name="employee_view" Visibility="Collapsed">
-            <local:UserListController x:Name="employee_control" Width="Auto" Height="Auto">
-                
+            <local:UserListController x:Name="employee_control">
+
             </local:UserListController>
         </DockPanel>
-        
-        
+
+        <DockPanel Grid.Row="0" Grid.Column="0"
+            Grid.RowSpan="10" Grid.ColumnSpan="10" 
+           x:Name="Language_view" Visibility="Collapsed">
+            <pages:LanguageControl x:Name="Language_Control" >
+
+            </pages:LanguageControl>
+        </DockPanel>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+            Grid.RowSpan="10" Grid.ColumnSpan="10"
+                   x:Name="Store_view" Visibility="Collapsed">
+            <store:StoreControl x:Name="Store_Control" Width="450" Height="800">
+
+            </store:StoreControl>
+        </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.Column="0"
+            Grid.RowSpan="10" Grid.ColumnSpan="10"
+                 x:Name="Setting_View" Visibility="Collapsed">
+            <window:SettingView x:Name="Setting_Window" Width="800" Height="450">
+                
+            </window:SettingView>
+        </Viewbox>
+
+       
     </StackPanel>
 </Window>

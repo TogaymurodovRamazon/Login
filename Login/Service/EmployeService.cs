@@ -134,6 +134,9 @@ namespace Login.Service
                     EmployeRole = all.EmployeRole,
 
                     UserName = all.User.UserName,
+                    Password=all.User.Password,
+                    PIN=all.User.PIN,
+
                     FirstName = all.User.Person.FirstName,
                     LastName = all.User.Person.LastName,
                     FatherName = all.User.Person.FatherName,

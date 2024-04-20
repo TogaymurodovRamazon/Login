@@ -1,0 +1,90 @@
+﻿<Window x:Class="Login.Pages.Store.ProductForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Login.Pages.Store"
+        mc:Ignorable="d"
+        Title="ProductForm" Height="400" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Name" VerticalAlignment="Center"/>
+                <TextBox x:Name="name_txt" Width="250" FontSize="10" Margin="5" 
+             materialDesign:HintAssist.Hint="Name"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                       Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="BarCode" VerticalAlignment="Center"/>
+                <TextBox x:Name="barcode_txt" Width="250" FontSize="10" Margin="5" 
+             materialDesign:HintAssist.Hint="BarCode"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                        Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="AcrualPrice" VerticalAlignment="Center"/>
+                <TextBox PreviewTextInput="NumericValidator" x:Name="actualprice_txt" 
+                         Width="250" FontSize="10" Margin="5" 
+                         materialDesign:HintAssist.Hint="AcrualPrice"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+            Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Amount" VerticalAlignment="Center"/>
+                <TextBox PreviewTextInput="NumericValidator" x:Name="amount_txt" 
+             Width="250" FontSize="10" Margin="5" 
+             materialDesign:HintAssist.Hint="Amount"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Amount in Package" VerticalAlignment="Center"/>
+                <TextBox PreviewTextInput="NumericValidator" x:Name="amountInPackage_txt" 
+                    Width="250" FontSize="10" Margin="5" 
+                    materialDesign:HintAssist.Hint="Amount in Package"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                    Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Price" VerticalAlignment="Center"/>
+                <TextBox PreviewTextInput="NumericValidator" x:Name="price_txt" 
+                     Width="250" FontSize="10" Margin="5" 
+                     materialDesign:HintAssist.Hint="Price"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                    Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Price of piece" VerticalAlignment="Center"/>
+                <TextBox PreviewTextInput="NumericValidator" x:Name="priceOfPiece_txt" 
+                     Width="250" FontSize="10" Margin="5" 
+                     materialDesign:HintAssist.Hint="Price of piece"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top"
+                    Margin="10 0 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Tag" VerticalAlignment="Center"/>
+                <CheckBox PreviewTextInput="NumericValidator" x:Name="tag_checkbox" 
+                     Width="250" FontSize="10" Margin="5" 
+                     materialDesign:HintAssist.Hint="Tag"/>
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5" 
+                    HorizontalAlignment="Right">
+            <Button x:Name="save_btn" Click="save_btn_Click" Content="Save" Width="100" ></Button>
+            <Button x:Name="cansel_btn" Click="cansel_btn_Click" Content="Cansel" Width="100" 
+                    Margin="20 0 25 0"></Button>   
+           
+        </StackPanel>
+        
+    </Grid>
+</Window>

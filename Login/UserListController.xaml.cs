@@ -73,6 +73,10 @@ namespace Login
                 userCreateForm.SetEmployeeDate(selectedUser.Id);
                 userCreateForm.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Select any employe!");
+            }
         }
 
         private async void delete_btn_Click(object sender, RoutedEventArgs e)
@@ -81,8 +85,19 @@ namespace Login
             {
                 if(selectedUser != null)
                 {
-                    await _employeService.DeleteEmployee(selectedUser.Id);
-                    await GetAllUsers();
+                    var all = MessageBox.Show("Do you want delete this employee", "WARNING",
+                        MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (all == MessageBoxResult.Yes)
+                    {
+                       await _employeService.DeleteEmployee(selectedUser.Id);
+                       await GetAllUsers();
+
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Select any employee!");
                 }
                
             }
@@ -95,6 +110,22 @@ namespace Login
         private void users_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedUser = users_datagrid.SelectedItem as EmployeeDTO;
+        }
+
+        private void users_datagrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(selectedUser != null)
+            {
+                UserCreateForm userCreateForm = new UserCreateForm();
+                userCreateForm.SetVariables(this, _employeService);
+                userCreateForm.SetEmployeeDate(selectedUser.Id, true);
+                userCreateForm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Select any employee!");
+            }
         }
     }
 }
