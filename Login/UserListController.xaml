@@ -44,12 +44,12 @@
                       MouseDoubleClick="users_datagrid_MouseDoubleClick">
                       
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="№" Binding="{Binding Id}" IsReadOnly="True" Width="0.5*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Fullname" Binding="{Binding FullName}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
-                    <DataGridTextColumn Header="BornDate" Binding="{Binding BornDate}" IsReadOnly="True" Width="1.5*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="№" Binding="{Binding Id}" IsReadOnly="True" Width="0.8*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fullname" Binding="{Binding FullName}" IsReadOnly="True" Width="2.3*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" IsReadOnly="True" Width="1.1*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber}" IsReadOnly="True" Width="1.2*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" Width="1.2*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="BornDate" Binding="{Binding BornDate}" IsReadOnly="True" Width="1.7*"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

@@ -20,7 +20,7 @@ namespace Login
     public partial class App : Application
     {
         private static IHost AppHost { get; set; }
-        private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RoboticsPos");
+         private string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RoboticsPos");
         public App()
         {
             if (!Directory.Exists(path))
@@ -52,6 +52,12 @@ namespace Login
                 
                 services.AddScoped<ICheckPrintRepository, CheckPrintRepository>();
                 services.AddScoped<ICheckPrintService, CheckPrintService>();
+
+                services.AddScoped<ICategoryRepository, CategoryRepository>();
+                services.AddScoped<ICategoryService, CategoryService>();
+
+                services.AddScoped<IDiscountRepository, DiscountRepository>();
+                services.AddScoped<IDiscountService, DiscountService>();
 
                 services.AddTransient<MainWindow>();
               

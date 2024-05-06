@@ -11,7 +11,7 @@ namespace Login.Data.Models
     {
         public decimal TotalSum { get; set; }
         public long ClientId { get; set; }
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
         public virtual List<Cart> Carts { get; set; }
     }
 }

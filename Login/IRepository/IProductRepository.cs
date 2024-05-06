@@ -16,5 +16,6 @@ namespace Login.IRepository
         public Task<Product> UpdateProduct(Product product);
         public Task DeleteProduct(int id);
         public Task<List<ProductForSearchDTO>> GetProductByName(string name);
+        public Task<List<Product>> GetProductsByIds(List<long> Ids);
     }
 }

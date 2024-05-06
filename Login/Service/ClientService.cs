@@ -21,7 +21,7 @@ namespace Login.Service
         public async Task CreateClient(ClinetDTO clinetDTO)
         {
             if (clinetDTO == null)
-                throw new ArgumentNullException("Client models is null!");
+                throw new ArgumentNullException("Client argument is null");
 
             Client client =new Client()
             {

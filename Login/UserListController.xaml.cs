@@ -57,7 +57,7 @@ namespace Login
             }
         }
 
-        private async void create_btn_Click(object sender, RoutedEventArgs e)
+        private void create_btn_Click(object sender, RoutedEventArgs e)
         {
            UserCreateForm userCreateForm = new UserCreateForm();
             userCreateForm.SetVariables(this, _employeService);

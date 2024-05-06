@@ -77,6 +77,12 @@ namespace Login.Repository
            return await product.Take(10).ToListAsync();
         }
 
+        public async Task<List<Product>> GetProductsByIds(List<long> Ids)
+        {
+           var produc= await _dBContext.Products.Where(a=> Ids.Contains(a.Id)).ToListAsync();
+            return produc;
+        }
+
         public async Task<Product> UpdateProduct(Product product)
         {
             _dBContext.Products.Update(product);

@@ -57,7 +57,7 @@
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edit" Background="#4D638C" Foreground="White" Height="25"
+                                <Button Content="Edit" Background="#4D638C" Foreground="DodgerBlue" Height="25"
                                         x:Name="edit_btn" Click="edit_btn_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -70,7 +70,7 @@
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Delete" Background="#4D638C" Foreground="White" Height="25"
+                                <Button Content="Delete" Background="#4D638C" Foreground="DodgerBlue" Height="25"
                                          x:Name="delete_btn" Click="delete_btn_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

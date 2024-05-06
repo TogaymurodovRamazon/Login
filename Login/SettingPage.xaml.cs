@@ -25,19 +25,30 @@ namespace Login
         private IUserService _userService { get; set; }
         private EmployeService _employeService { get; set; }
         private ICheckPrintService _checkPrintService { get; set; }
+
+        private IProductService _productService { get; set; }
+        private ICategoryService _categoryService { get; set; }
+        private IDiscountService _discountService { get; set; }
         public SettingPage()
         {
             InitializeComponent();
         }
         public void SetMainWindow(MainWindow window,IUserService userService,EmployeService employeService, 
-            ICheckPrintService checkPrintService)
+            ICheckPrintService checkPrintService,IProductService productService,ICategoryService categoryService,IDiscountService discountService)
         {
             _window = window;
             _userService = userService;
             _employeService = employeService;
             _checkPrintService = checkPrintService;
+            _discountService = discountService;
+            _categoryService = categoryService;
+            _productService = productService;
+
             employees_control.SetMainWindow(_employeService, _window, _userService);
             cheksozlama_control.SetAllVaribles(_window,_checkPrintService,this);
+            chegirmaberish_controller.SetVariables(this, _discountService, _productService);
+           
+          
         }
 
         private void employe_btn_Click(object sender, RoutedEventArgs e)
@@ -46,6 +57,8 @@ namespace Login
             employees_doc.Visibility = Visibility.Visible;
             language_doc.Visibility = Visibility.Collapsed;
             checksoz_doc.Visibility = Visibility.Collapsed;
+            chegirmaberish_doc.Visibility = Visibility.Collapsed;
+            category_doc.Visibility = Visibility.Collapsed;
 
         }
 
@@ -55,6 +68,9 @@ namespace Login
             language_doc.Visibility = Visibility.Visible;
             employees_doc.Visibility = Visibility.Collapsed;
             checksoz_doc.Visibility= Visibility.Collapsed;
+            chegirmaberish_doc.Visibility=Visibility.Collapsed;
+            mijoz_doc.Visibility=Visibility.Collapsed;
+            category_doc.Visibility = Visibility.Collapsed;
         }
         
         private void Kichik_Katta_Click(object sender, RoutedEventArgs e)
@@ -80,11 +96,42 @@ namespace Login
             checksoz_doc.Visibility = Visibility.Visible;
             employees_doc.Visibility = Visibility.Collapsed;
             language_doc.Visibility = Visibility.Collapsed;
+            chegirmaberish_doc.Visibility = Visibility.Collapsed;
+            mijoz_doc.Visibility = Visibility.Collapsed;
+            category_doc.Visibility = Visibility.Collapsed;
         }
 
         private void mijoz_btn_Click(object sender, RoutedEventArgs e)
         {
+           mijoz_doc.Visibility = Visibility.Visible;
+           employees_doc.Visibility = Visibility.Collapsed;
+           language_doc.Visibility = Visibility.Collapsed;
+           chegirmaberish_doc.Visibility = Visibility.Collapsed;
+            checksoz_doc.Visibility = Visibility.Collapsed;
+            category_doc.Visibility = Visibility.Collapsed;
+        }
+        private void chegirmaberish_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            chegirmaberish_doc.Visibility = Visibility.Visible;
+            employees_doc.Visibility = Visibility.Collapsed;
+            language_doc.Visibility = Visibility.Collapsed;
+            checksoz_doc.Visibility = Visibility.Collapsed;
+            mijoz_doc.Visibility= Visibility.Collapsed;
+            category_doc.Visibility = Visibility.Collapsed;
+        }
 
+        private void category_btn_Click(object sender, RoutedEventArgs e)
+        {
+             category_control.SetVariabls(this, _productService, _categoryService);
+            category_control.GetAllCategory();
+           
+            category_doc.Visibility = Visibility.Visible;
+            employees_doc.Visibility = Visibility.Collapsed;
+            language_doc.Visibility = Visibility.Collapsed;
+            checksoz_doc.Visibility = Visibility.Collapsed;
+            mijoz_doc.Visibility = Visibility.Collapsed;
+            chegirmaberish_doc.Visibility = Visibility.Collapsed;
         }
 
         // xodimlar oynasiga o'xshagan bo'ladi product oynalari ham, xodimlar oynasini productga moslashtirib turing, jadvallarini ustunlarini o'zgartirib

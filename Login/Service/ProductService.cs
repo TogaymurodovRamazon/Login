@@ -62,6 +62,21 @@ namespace Login.Service
             return new List<ProductDTO>();
         }
 
+        public async Task<List<ProductForSelect>> GetAllProductsForDiscount()
+        {
+            var products = await _productRepository.GetAllProducts();
+            if(products != null && products.Any())
+            {
+                return products.Select(a => new ProductForSelect()
+                {
+                    Id = a.Id,
+                    Name=a.Name,
+                    Amount = a.Amount,
+                }).ToList();
+            }
+            return new List<ProductForSelect>();
+        }
+
         public async Task<ProductDTO> GetProductById(long id)
         {
             var res = await _productRepository.GetById((int)id);
@@ -89,6 +104,22 @@ namespace Login.Service
         public async Task<List<ProductForSearchDTO>> GetProductForSearche(string searche)
         {
             return await _productRepository.GetProductByName(searche);
+        }
+
+        public async Task<List<ProductForSelect>> GetProductsByIdsForDiscount(List<long> productIds)
+        {
+            var prod = await _productRepository.GetProductsByIds(productIds);
+            if(prod != null && prod.Any())
+            {
+                return prod.Select(x => new ProductForSelect()
+                {
+                    Id=x.Id,
+                    Name=x.Name,
+                    Amount = x.Amount,
+                    Select=true
+                }).ToList();
+            }
+            return new List<ProductForSelect>();
         }
 
         public async Task<ProductDTO> UpdateProduct(long id, ProductDTO product)

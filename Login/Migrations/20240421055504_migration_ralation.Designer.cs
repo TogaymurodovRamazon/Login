@@ -3,6 +3,7 @@ using System;
 using Login.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,61 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Login.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240421055504_migration_ralation")]
+    partial class migration_ralation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
-
-            modelBuilder.Entity("Login.Data.Models.Cart", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("ActualPrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Count")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long?>("DiscountId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long?>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("SalePrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long?>("ShopId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("TotalSum")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DiscountId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ShopId");
-
-                    b.ToTable("Carts");
-                });
 
             modelBuilder.Entity("Login.Data.Models.CashBox", b =>
                 {
@@ -423,36 +377,6 @@ namespace Login.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("Login.Data.Models.Shop", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("ClientId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("TotalSum")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Shops");
-                });
-
             modelBuilder.Entity("Login.Data.Models.User", b =>
                 {
                     b.Property<long>("Id")
@@ -490,27 +414,6 @@ namespace Login.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Login.Data.Models.Cart", b =>
-                {
-                    b.HasOne("Login.Data.Models.Discount", "Discount")
-                        .WithMany()
-                        .HasForeignKey("DiscountId");
-
-                    b.HasOne("Login.Data.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("Login.Data.Models.Shop", "Shop")
-                        .WithMany("Carts")
-                        .HasForeignKey("ShopId");
-
-                    b.Navigation("Discount");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Shop");
                 });
 
             modelBuilder.Entity("Login.Data.Models.Client", b =>
@@ -565,17 +468,6 @@ namespace Login.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("Login.Data.Models.Shop", b =>
-                {
-                    b.HasOne("Login.Data.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-                });
-
             modelBuilder.Entity("Login.Data.Models.User", b =>
                 {
                     b.HasOne("Login.Data.Models.Person", "Person")
@@ -602,11 +494,6 @@ namespace Login.Migrations
                     b.Navigation("ChildCategories");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Login.Data.Models.Shop", b =>
-                {
-                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

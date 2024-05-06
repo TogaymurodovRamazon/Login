@@ -61,7 +61,7 @@
                 <StackPanel>
                     <Button Content="Chegirma berish" Width="180" Height="30" Margin="0 15 0 0"
                         Background="Transparent" Foreground="Snow" FontSize="18"
-                            BorderBrush="White"/>
+                            BorderBrush="White" x:Name="chegirmaberish_btn" Click="chegirmaberish_btn_Click"/>
                 </StackPanel>
 
                 <StackPanel>
@@ -72,7 +72,7 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <Button Content="Kassa" Width="180" Height="30" Margin="0 15 0 0"
+                    <Button Content="Kompaniya" Width="180" Height="30" Margin="0 15 0 0"
                          Background="Transparent" Foreground="Snow" FontSize="20"
                             BorderBrush="White"/>
                 </StackPanel>
@@ -84,9 +84,9 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <Button Content="Thems" Width="180" Height="30" Margin="0 15 0 0"
-                         Background="Transparent" Foreground="Snow" FontSize="20"
-                            BorderBrush="White"/>
+                    <Button Content="Category" Width="180" Height="30" Margin="0 15 0 0"
+                         Background="Transparent" Foreground="Snow" FontSize="20" BorderBrush="White" 
+                            x:Name="category_btn" Click="category_btn_Click"/>
                 </StackPanel>
                 
             </StackPanel>
@@ -109,6 +109,27 @@
                 <window:CheckPrintListWindow x:Name="cheksozlama_control">
                 
                 </window:CheckPrintListWindow>
+            </DockPanel>
+
+            <DockPanel Width="Auto" Height="Auto" x:Name="chegirmaberish_doc" Visibility="Collapsed">
+                <pages:DiscountListController x:Name="chegirmaberish_controller">
+
+                </pages:DiscountListController>
+            </DockPanel>
+
+            <DockPanel Width="Auto" Height="Auto" x:Name="mijoz_doc" Visibility="Collapsed">
+                <pages:ClientListController x:Name="mijoz_control">
+                    
+                </pages:ClientListController>
+                
+            </DockPanel>
+
+            <DockPanel Width="Auto" Height="Auto" x:Name="category_doc" Visibility="Collapsed">
+                <pages:CategoryListController x:Name="category_control">
+                    
+                </pages:CategoryListController>
+
+
             </DockPanel>
             
         </Grid>

@@ -27,12 +27,16 @@ namespace Login
         private readonly EmployeService employeService;
         private IProductService _productService;
         private ICheckPrintService _checkPrintService;
+        private ICategoryService _categoryService;
+        private IDiscountService _discountService;
+       
         public MainWindow(IUserService userService , 
             IGenericRepository<User> genericRepository , 
             AppDBContext appDBContext,
             EmployeService employeService,
             IProductService productService, 
-            ICheckPrintService checkPrintService) 
+            ICheckPrintService checkPrintService,
+            ICategoryService categoryService,IDiscountService discountService) 
         {
             InitializeComponent();
 
@@ -42,13 +46,15 @@ namespace Login
             this.genericRepository = genericRepository;
             _productService = productService;
             _checkPrintService = checkPrintService;
+            _categoryService = categoryService;
+            _discountService = discountService;
 
             Asosiy_Page.SetMainWindow(this);
             Login_Page.SetMainWindow(this, userService);
             PinKod_Page.SetMainWindow(this,userService);
             Menyu_Page.SetMainWindow(this ,_productService);
             Kassa_Page.SetMainWindow(this);
-            Setting_Page.SetMainWindow(this, userService, employeService, checkPrintService);
+            Setting_Page.SetMainWindow(this, userService, employeService, checkPrintService,productService,categoryService,discountService);
             Xodim_Control.SetMainWindow(this);
             employee_control.SetMainWindow(employeService, this, userService);
             Language_Control.SetMainWindow(this);

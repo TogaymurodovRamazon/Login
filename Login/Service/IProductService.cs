@@ -15,5 +15,8 @@ namespace Login.Service
         public Task<ProductDTO> UpdateProduct(long id, ProductDTO product);
         public Task DeleteProduct(long id);
         public Task<ProductDTO> GetProductById(long id);
+
+        public Task<List<ProductForSelect>> GetAllProductsForDiscount();
+        public Task<List<ProductForSelect>> GetProductsByIdsForDiscount(List<long> productIds);
     }
 }

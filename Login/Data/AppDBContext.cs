@@ -31,6 +31,9 @@ namespace Login.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
+        public DbSet<Shop> Shops {  get; set; }
+        public DbSet<Cart> Carts { get; set; }
+
         private SqliteConnection _connection;
 
         private List<EntityEntry> ModifiedEntities = new();
