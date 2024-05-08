@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Login"
+             xmlns:pages="clr-namespace:Login.Pages.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
@@ -258,10 +259,10 @@
                 
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Visibility="Visible">
                 <StackPanel>
                     <WrapPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel x:Name="menyu_box" Orientation="Horizontal">
                             <Button x:Name="edit_btn" Click="edit_btn_Click" 
          Width="80" Height="80" Margin="6 6 0 0" Background="Transparent">
                                 <StackPanel>
@@ -385,6 +386,13 @@
                     </WrapPanel>
                 </StackPanel>
             </Grid>
+
+            <DockPanel Height="1000" x:Name="category_doc" Visibility="Collapsed" VerticalAlignment="Top">
+                <pages:CategoriesForKassaControl x:Name="categoriesControl">
+                    
+                </pages:CategoriesForKassaControl>
+            </DockPanel>
+            
         </Grid>
     </Grid>
 </UserControl>

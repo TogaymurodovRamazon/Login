@@ -25,20 +25,24 @@ namespace Login
     {
         MainWindow _mainWindow { get; set; }
         IProductService _productService {  get; set; }
+        private ICategoryService _categoryService { get; set; }
         private ProductForSearchDTO selectedProduct {  get; set; }
 
         private List<ProductForSearchDTO> Products=new List<ProductForSearchDTO>();
         private List<ProductForKassaDTO> ProductCash=new List<ProductForKassaDTO>();
 
         private ProductForKassaDTO selectedKassaProduct { get; set; }
+
+        
         public Menyu()
         {
             InitializeComponent();
         }
-        public void SetMainWindow(MainWindow mainWindow ,IProductService productService)
+        public void SetMainWindow(MainWindow mainWindow ,IProductService productService, ICategoryService categoryService)
         {
             _mainWindow = mainWindow;
            _productService = productService;
+            _categoryService = categoryService;
         }
 
         private async void searchcombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,6 +58,10 @@ namespace Login
             }
         }
 
+        public void AddProductToCash(long productId)
+        {
+            AddProductTable(productId);
+        }
          private async void AddProductTable(long productId)
         {
             var product=await _productService.GetProductById(productId);
@@ -131,7 +139,10 @@ namespace Login
 
         private void kategori_btn_Click(object sender, RoutedEventArgs e)
         {
-           
+           menyu_box.Visibility = Visibility.Collapsed;
+           category_doc.Visibility = Visibility.Visible;
+            categoriesControl.SetVariables(this, _categoryService);
+            categoriesControl.GetChildCategoies(0);
         }
 
         private void TizChiq_btn_Click(object sender, RoutedEventArgs e)

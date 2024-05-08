@@ -47,14 +47,33 @@ namespace Login.Repository
                 Include(a=>a.ParentCategory).ToListAsync();
         }
 
-        public async Task<List<SelectDTO>> GetCategoriesForSelect()
+        public async Task<List<SelectDTO>> GetCategoriesForSelect(long? parentId)
         {
-            var category = await _dbContext.ProductCategories.Select(a=> new SelectDTO()
+            var category = await _dbContext.ProductCategories.Where(a=>parentId != null? (parentId==0 ? a.ParentCategoryId==0 : 
+            a.ParentCategoryId==parentId) : true).Select(a=> new SelectDTO()
             {
                 Id = a.Id,
                 Name = a.Name,
             }).AsSplitQuery().ToListAsync();
             return category;
+        }
+
+        public async Task<bool> HasChildCategory(long categoryId)
+        {
+            var category = await _dbContext.ProductCategories.Include(s => s.ChildCategories).FirstOrDefaultAsync(s => s.Id == categoryId);
+            if (category is not null)
+            {
+                if (category.ChildCategories != null && category.ChildCategories.Any())
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                throw new Exception("Category not found!");
+            }
+
+
         }
 
         public async Task<ProductCategory> UpdateProductCategory(ProductCategory category)

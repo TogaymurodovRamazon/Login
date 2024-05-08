@@ -12,7 +12,7 @@ namespace Login.IRepository
         public Task<List<Discount>> GetAllDiscount();
         public Task<Discount> CreateDiscount(Discount discount);
         public Task<Discount> UpdateDiscount(Discount discount);
-        public Task DeleteDiscount(Discount discount);
+        public Task DeleteDiscount(long id);
         public Task<Discount> GetDiscountById(long Id);
     }
 }

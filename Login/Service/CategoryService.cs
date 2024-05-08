@@ -91,9 +91,14 @@ namespace Login.Service
                 throw new Exception("Category not found!");
         }
 
-        public async Task<List<SelectDTO>> GetCategoriesForSelect()
+        public async Task<List<SelectDTO>> GetCategoriesForSelect(long? parentId=null)
         {
-            return await _categoryRepository.GetCategoriesForSelect();
+            return await _categoryRepository.GetCategoriesForSelect(parentId);
+        }
+
+        public async Task<bool> HasChildCategory(long categoryId)
+        {
+           return await _categoryRepository.HasChildCategory(categoryId);
         }
 
         public async Task<CategoryDTO> UpdateProductCategory(long Id, CategoryDTO categoryDTO)

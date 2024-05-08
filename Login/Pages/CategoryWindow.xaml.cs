@@ -54,7 +54,7 @@ namespace Login.Pages
 
         public async void GetParentCategoriess()
         {
-            parentCategories = await _categoryService.GetCategoriesForSelect();
+            parentCategories = await _categoryService.GetCategoriesForSelect(parentId);
             if (parentCategories.Any())
             {
                 parent_category_combox.ItemsSource = parentCategories.Select(a=>a.Name);

@@ -10,11 +10,12 @@ namespace Login.IRepository
 {
     public interface ICategoryRepository
     {
-        public Task<List<SelectDTO>> GetCategoriesForSelect();
+        public Task<List<SelectDTO>> GetCategoriesForSelect(long? parentId);
         public Task<List<ProductCategory>> GetAllProductCategorys();
         public Task<ProductCategory> GetAllById(long Id);
         public Task<ProductCategory> CreateProductCategory(ProductCategory category);
         public Task<ProductCategory> UpdateProductCategory(ProductCategory category);
         public Task DeleteProductCategory(long Id);
+        public Task<bool> HasChildCategory(long categoryId);
     }
 }

@@ -4,6 +4,7 @@ using Login.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,33 +48,45 @@ namespace Login.Service
 
         public async Task DeleteDiscount(long Id)
         {
-            var discount = await _discountRepository.GetDiscountById(Id);
-            if (discount == null)
-                throw new Exception("Discount not found!");
-            await _discountRepository.DeleteDiscount(discount);
+           if(Id > 0)
+            {
+                await _discountRepository.DeleteDiscount(Id);
+            }
+
         }
 
         public async Task<DiscountDTO> GetAllById(long Id)
         {
-            var dis = await _discountRepository.GetDiscountById(Id);
-            if (dis == null) 
-                throw new Exception("Discount not found!");
-            else
+            if(Id > 0)
             {
-                var discount = new DiscountDTO()
+                var dis = await _discountRepository.GetDiscountById(Id);
+                if(dis != null)
                 {
-                    Id = dis.Id,
-                    Title = dis.Title,
-                    Description = dis.Description,
-                    Amount = dis.Amount,
-                    AmountType= dis.AmountType,
-                    StarDate = dis.StarDate,
-                    EndDate = dis.EndDate,
-                    DiscountStatus = dis.DiscountStatus,
-
-                };
-                return discount;
+                    return new DiscountDTO()
+                    {
+                        Id = dis.Id,
+                        Title = dis.Title,
+                        Description = dis.Description,
+                        Amount = dis.Amount,
+                        AmountType = dis.AmountType,
+                        StarDate = dis.StarDate,
+                        EndDate = dis.EndDate,
+                        DiscountStatus = dis.DiscountStatus,
+                        ProductsDTO = dis.Products.Select(a => new ProductForSelect()
+                        {
+                            Id = a.Id,
+                            Name = a.Name,
+                            Amount = a.Amount,
+                            Select = true
+                        }).ToList(),
+                    };
+                }
+                else
+                {
+                    throw new Exception("Discount not found!");
+                }
             }
+            return null;
         }
 
         public async Task<List<DiscountDTO>> GetAllDiscount()
@@ -81,16 +94,17 @@ namespace Login.Service
             var dis = await _discountRepository.GetAllDiscount();
             if (dis.Any())
             {
-                var allDis = dis.Select(a => new DiscountDTO()
+                return dis.Select(a=>new DiscountDTO()
                 {
                     Id = a.Id,
                     Title = a.Title,
                     Description = a.Description,
                     Amount = a.Amount,
-                    AmountType= a.AmountType,
+                    AmountType = a.AmountType,
                     StarDate = a.StarDate,
                     EndDate = a.EndDate,
                     DiscountStatus = a.DiscountStatus,
+                    ProductName=string.Join(",",a.Products.Select(p => p.Name))
                 }).ToList();
             }
             else
@@ -128,7 +142,10 @@ namespace Login.Service
                     throw new Exception("Discount not found!");
                 }
             }
-            return discountDTO;
+            else
+            {
+                throw new Exception("Id is equal or less than 0");
+            }
         }
     }
 }

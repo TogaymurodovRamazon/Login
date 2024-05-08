@@ -52,7 +52,7 @@ namespace Login
             Asosiy_Page.SetMainWindow(this);
             Login_Page.SetMainWindow(this, userService);
             PinKod_Page.SetMainWindow(this,userService);
-            Menyu_Page.SetMainWindow(this ,_productService);
+            Menyu_Page.SetMainWindow(this ,_productService, _categoryService);
             Kassa_Page.SetMainWindow(this);
             Setting_Page.SetMainWindow(this, userService, employeService, checkPrintService,productService,categoryService,discountService);
             Xodim_Control.SetMainWindow(this);

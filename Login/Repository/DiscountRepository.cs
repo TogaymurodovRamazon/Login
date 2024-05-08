@@ -36,11 +36,19 @@ namespace Login.Repository
                 return discount;
         }
 
-        public async Task DeleteDiscount(Discount discount)
+        public async Task DeleteDiscount(long id)
         {
-           discount.IsDeleted = true;
-            _dbContext.Discounts.Update(discount);
-            await _dbContext.SaveChangesAsync();
+            var discount = await _dbContext.Discounts.FirstOrDefaultAsync(a => a.Id == id);
+            if(discount != null)
+            {
+                discount.IsDeleted = true;
+                _dbContext.Discounts.Update(discount);
+                await _dbContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Discount not found!");
+            }
         }
 
         public async Task<List<Discount>> GetAllDiscount()

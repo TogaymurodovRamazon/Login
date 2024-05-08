@@ -9,11 +9,12 @@ namespace Login.Service
 {
     public interface ICategoryService
     {
-        public Task<List<SelectDTO>> GetCategoriesForSelect();
+        public Task<List<SelectDTO>> GetCategoriesForSelect(long? parentId);
         public Task<List<CategoryDTO>> GetAllProductCategorys();
         public Task<CategoryDTO> GetById(long Id);
         public Task<CategoryDTO> CreateProductCategory(CategoryDTO categoryDTO);
         public Task<CategoryDTO> UpdateProductCategory(long Id, CategoryDTO categoryDTO);
         public Task DeleteProductCategory(long Id);
+        public Task<bool> HasChildCategory(long categoryId);
     }
 }
